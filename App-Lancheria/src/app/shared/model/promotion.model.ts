@@ -1,0 +1,10 @@
+export interface Promotion {
+    id: number;
+    titulo: string;
+    descricao: string;
+    dataInicio: Date;
+    dataFim: Date;
+    desconto: number; // Representando a porcentagem de desconto
+    imagemUrl?: string; // URL opcional para imagem da promoção
+    produtosAplicaveis?: number[]; // IDs dos produtos aos quais a promoção se aplica
+}
