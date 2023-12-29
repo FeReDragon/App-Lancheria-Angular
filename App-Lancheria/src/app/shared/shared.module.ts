@@ -15,7 +15,14 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    // Outros módulos...
+  ],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    SidebarComponent,
+    HomeComponent
   ]
 })
 export class SharedModule { }

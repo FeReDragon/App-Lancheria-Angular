@@ -11,6 +11,7 @@ import { UserModule } from './modules/user/user.module';
 import { FidelityModule } from './modules/fidelity/fidelity.module';
 import { PromotionsModule } from './modules/promotions/promotions.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminModule } from './modules/admin/admin.module';
     UserModule,
     FidelityModule,
     PromotionsModule,
-    AdminModule
+    AdminModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
