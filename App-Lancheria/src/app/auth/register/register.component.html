@@ -1,53 +1,53 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8"> <!-- Aumentando a largura do card -->
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     Registro
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form (ngSubmit)="onSubmit()">
                         <div class="row">
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputName">Nome</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="Digite seu nome completo">
+                                <input type="text" class="form-control" id="inputName" [(ngModel)]="user.nome" name="nome" placeholder="Digite seu nome completo">
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputEmail">E-mail</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Digite seu e-mail">
+                                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="user.email" name="email" placeholder="Digite seu e-mail">
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputPhone">Telefone</label>
-                                <input type="tel" class="form-control" id="inputPhone" placeholder="Digite seu telefone">
+                                <input type="tel" class="form-control" id="inputPhone" [(ngModel)]="user.telefone" name="telefone" placeholder="Digite seu telefone">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputZip">CEP</label>
-                                <input type="text" class="form-control" id="inputZip" placeholder="CEP">
+                                <input type="text" class="form-control" id="inputZip" [(ngModel)]="user.cep" name="cep" placeholder="CEP">
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputCity">Cidade</label>
-                                <input type="text" class="form-control" id="inputCity" placeholder="Cidade" readonly>
+                                <input type="text" class="form-control" id="inputCity" [(ngModel)]="user.cidade" name="cidade" placeholder="Cidade" readonly>
                             </div>
                             <div class="col-md-4 form-group mb-3">
                                 <label for="inputState">Estado</label>
-                                <input type="text" class="form-control" id="inputState" placeholder="Estado" readonly>
+                                <input type="text" class="form-control" id="inputState" [(ngModel)]="user.estado" name="estado" placeholder="Estado" readonly>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12 form-group mb-3"> <!-- Campo de endereço ocupando toda a linha -->
+                            <div class="col-md-12 form-group mb-3">
                                 <label for="inputAddress">Endereço</label>
-                                <input type="text" class="form-control" id="inputAddress" placeholder="Rua, Número, Complemento" readonly>
+                                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="user.endereco" name="endereco" placeholder="Rua, Número, Complemento" readonly>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 form-group mb-3">
                                 <label for="inputPassword">Senha</label>
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Digite uma senha">
+                                <input type="password" class="form-control" id="inputPassword" [(ngModel)]="user.senha" name="senha" placeholder="Digite uma senha">
                             </div>
                             <div class="col-md-6 form-group mb-3">
                                 <label for="inputConfirmPassword">Confirme sua Senha</label>
@@ -62,4 +62,5 @@
         </div>
     </div>
 </div>
+iv>
 
