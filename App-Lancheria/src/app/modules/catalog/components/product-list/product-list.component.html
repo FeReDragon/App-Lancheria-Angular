@@ -14,14 +14,14 @@
 
 <div class="container my-5" *ngIf="produtos && produtos.length > 0">
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let produto of produtos"> <!-- 4 colunas com margem menor -->
+    <div class="col-md-3 mb-3" *ngFor="let produto of produtos">
       <div class="card card-custom">
         <img [src]="produto.imagemUrl" class="card-img-top card-img-custom" alt="Imagem do Produto">
         <div class="card-body">
           <h5 class="card-title">{{ produto.nome }}</h5>
           <p class="card-text">{{ produto.descricao }}</p>
           <p class="card-text">Preço: {{ produto.preco | currency }}</p>
-          <a href="#" class="btn btn-primary">Ver Detalhes</a>
+          <button class="btn btn-primary btn-sm" (click)="adicionarAoCarrinho(produto)">Add ao Pedido</button>
         </div>
       </div>
     </div>
@@ -29,10 +29,8 @@
 </div>
 
 
-
 <div class="container" *ngIf="!produtos || produtos.length === 0">
   <p>Nenhum produto encontrado nesta categoria.</p>
 </div>
 
-  
-  <app-footer>
+<app-footer>

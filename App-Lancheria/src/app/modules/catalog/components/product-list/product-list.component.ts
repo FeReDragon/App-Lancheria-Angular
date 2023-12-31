@@ -3,6 +3,7 @@ import { Produto } from '../../../../shared/model/product.model';
 import { ProductService } from '../../../../core/services/product.service';
 import { Category } from '../../../../shared/model/category.model';
 import { CategoryService } from '../../../../core/services/category.service';
+import { CartService } from '../../../../core/services/cart.service'; // Importe o CartService
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +17,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private cartService: CartService // Injete o CartService
   ) {}
 
   ngOnInit() {
@@ -49,5 +51,11 @@ export class ProductListComponent implements OnInit {
     this.selectedCategoriaId = id;
     this.loadProdutos();
   }  
+
+  adicionarAoCarrinho(produto: Produto) {
+    this.cartService.adicionarAoCarrinho(produto);
+    // Adicione lógica adicional se necessário, como exibir uma notificação
+  }
+  
 }
 
