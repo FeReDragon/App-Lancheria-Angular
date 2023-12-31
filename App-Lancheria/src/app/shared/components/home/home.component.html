@@ -1,5 +1,30 @@
 <app-navbar></app-navbar> 
 
+<div class="margem-customizada"> <!-- Ajuste o valor '3' para aumentar ou diminuir a margem -->
+  <p class="d-inline-flex gap-1">
+    <a class="btn btn-primary collapsed" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Conheça Nossos Lanches</a>
+    <button class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Entrega Rápida</button>
+  </p>
+  <div class="row">
+    <div class="col">
+      <div class="multi-collapse collapse" id="multiCollapseExample1" style="">
+        <div class="card card-body my-3">
+          Descubra uma variedade de lanches deliciosos e saborosos em nosso cardápio! Desde os clássicos X-Burgers até opções gourmet especiais, todos preparados com ingredientes frescos e de qualidade. Perfeito para saciar sua fome a qualquer hora do dia.
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="multi-collapse collapse" id="multiCollapseExample2" style="">
+        <div class="card card-body my-3">
+          Nossa entrega é rápida e eficiente, garantindo que seu lanche chegue quentinho e delicioso até você. Ideal para aqueles dias de trabalho intenso ou para momentos de relaxamento em casa. Experimente a comodidade e rapidez do nosso serviço de entrega!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
@@ -40,61 +65,85 @@
 </div>
 
 <div class="container my-5">
+  <div class="row justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-md-4 d-flex">
+          <div class="card border-0 my-2 h-100">
+              <img src="assets/img/lanche2.jpg" class="card-img-top img-fluid img-card" alt="Lanche">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Lanches</h5>
+                  <p class="card-text">Explorando os sabores clássicos e inovadores, nossos lanches são feitos para satisfazer a todos os paladares.</p>
+                  <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
+              </div>
+          </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-4 d-flex">
+          <div class="card border-0 my-2 h-100">
+              <img src="assets/img/batatafrita.png" class="card-img-top img-fluid img-card" alt="Batata Frita">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Porções</h5>
+                  <p class="card-text">Nossas porções são perfeitas para compartilhar ou para aqueles momentos de fome intensa.</p>
+                  <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
+              </div>
+          </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-4 d-flex">
+          <div class="card border-0 my-2 h-100">
+              <img src="assets/img/pizza1.jpg" class="card-img-top img-fluid img-card" alt="Pizza">
+              <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Pizzas</h5>
+                  <p class="card-text">Deliciosas pizzas com uma variedade de sabores para atender todos os gostos.</p>
+                  <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
+              </div>
+          </div>
+      </div>
+  </div>
 
- 
 
-
-
-
-    <div class="row justify-content-center">
-        <!-- Card 1 -->
-        <div class="col-md-4 d-flex">
-            <div class="card my-2 h-100">
-                <img src="assets/img/lanche2.jpg" class="card-img-top img-fluid img-card" alt="Lanche">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Lanches</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
-                </div>
-            </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col-md-4 d-flex">
-            <div class="card my-2 h-100">
-                <img src="assets/img/batatafrita.png" class="card-img-top img-fluid img-card" alt="Batata Frita">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Porções</h5>
-                    <p class="card-text">Some more example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
-                </div>
-            </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col-md-4 d-flex">
-            <div class="card my-2 h-100">
-                <img src="assets/img/pizza1.jpg" class="card-img-top img-fluid img-card" alt="Pizza">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Pizzas</h5>
-                    <p class="card-text">And some more example text here as well to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary mt-auto">Faça Seu Pedido!</a>
-                </div>
-            </div>
-        </div>
-    </div>  
     
-    <div class="card text-center my-5">
-      <div class="card-header">
-        Prato do Dia!
+    <div class="accordion my-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Variedade de Lanches
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>Explore nossa vasta seleção de lanches!</strong> Oferecemos desde opções clássicas como X-Burgers e Hot Dogs até criações gourmet exclusivas. Nossos lanches são preparados com ingredientes frescos e de alta qualidade, garantindo sabores inesquecíveis e satisfação total. Perfeitos para qualquer momento do dia, seja para um almoço rápido ou um lanche noturno.
+          </div>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">Prato Especial do Dia: Frango Assado com Ervas Finas</h5>
-        <p class="card-text">Descubra o sabor inigualável do nosso Frango Assado, temperado com uma seleção exclusiva de ervas finas. Acompanhado de legumes frescos e uma deliciosa guarnição, este prato é a escolha perfeita para uma refeição equilibrada e cheia de sabor. Venha experimentar e deixe seu dia ainda mais especial!</p>
-        <a href="#" class="btn btn-primary">Confira!!!</a>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Ingredientes Frescos e de Qualidade
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>Compromisso com a qualidade!</strong> Selecionamos cuidadosamente cada ingrediente para garantir que nossos lanches sejam não só deliciosos, mas também nutritivos. Utilizamos carnes selecionadas, vegetais frescos e pães artesanais, tudo para que você tenha a melhor experiência gastronômica. Venha descobrir o sabor único que só ingredientes de primeira linha podem oferecer.
+          </div>
+        </div>
       </div>
-      <div class="card-footer text-body-secondary">
-        29 de Dezembro
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Entrega Rápida e Confiável
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <strong>Seu lanche entregue no conforto do seu lar!</strong> Com nosso serviço de entrega rápida, você pode desfrutar dos seus lanches favoritos onde estiver. Nosso foco é garantir que seu pedido chegue quente e fresco, pronto para ser saboreado. Ideal para aqueles dias corridos ou para um jantar aconchegante em casa.
+          </div>
+        </div>
       </div>
     </div>
+    
+
+    
     
     
 </div>
