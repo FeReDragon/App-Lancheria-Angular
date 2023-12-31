@@ -4,6 +4,7 @@ import { HomeComponent } from './shared/components/home/home.component'; // Impo
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductListComponent } from './modules/catalog/components/product-list/product-list.component';
+import { CartViewComponent } from './modules/checkout/components/cart-view/cart-view.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegisterComponent },
   { path: 'menu', component: ProductListComponent },
+  { path: 'carrinho', component: CartViewComponent },
   // Outras rotas podem ser adicionadas aqui
 ];
 
