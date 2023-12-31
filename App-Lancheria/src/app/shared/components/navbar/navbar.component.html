@@ -1,23 +1,22 @@
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-     
-
+<div class="container mb-5">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <img src="assets/img/logo1.png" class="logo-header" alt="Logotipo">
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2">Lanches</a></li>
-        <li><a href="#" class="nav-link px-2">Pedido</a></li>
-        <li><a href="#" class="nav-link px-2">Endereço</a></li>
-        <li><a href="#" class="nav-link px-2">Sobre</a></li>
+          <li><a routerLink="/home" class="nav-link px-2 link-secondary">Home</a></li>
+          <li><a routerLink="/menu" class="nav-link px-2">Menu</a></li>
+          <li><a routerLink="/pedido" class="nav-link px-2">Pedido</a></li>
+          <li><a routerLink="/endereco" class="nav-link px-2">Endereço</a></li>
+          <li><a routerLink="/sobre" class="nav-link px-2">Sobre</a></li>
       </ul>
       <ul class="list-unstyled d-flex my-3">
-        <li class="ms-3"><a href="#"><i class="fab fa-whatsapp fa-2x"></i></a></li>
-        <li class="ms-3"><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
-        <li class="ms-3"><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
-    </ul>
-
+          <li class="ms-3"><a href="#"><i class="fab fa-whatsapp fa-2x"></i></a></li>
+          <li class="ms-3"><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
+          <li class="ms-3"><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
+      </ul>
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
-        <button type="button" class="btn btn-primary">Registrar</button>
+          <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+          <button type="button" class="btn btn-primary" routerLink="/registro">Registrar</button>
       </div>
-    </header>
-  </div>
+  </header>
+</div>
+

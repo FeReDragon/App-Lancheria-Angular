@@ -1,4 +1,33 @@
-.img-card {
-    height: 200px;
-    object-fit: cover;
-}
+/* Estilos para o Carrossel */
+.carousel-item img {
+    max-width: 1100px;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    margin: auto;
+    transition-duration: 5s; /* Aumenta a duração da transição para 5 segundos */
+  }
+  
+  /* Centralizar verticalmente os controles do carrossel */
+  .carousel-control-prev, .carousel-control-next {
+    align-items: center;
+  }
+  
+  /* Ajustar a posição dos botões de controle para ficarem dentro das imagens */
+  .carousel-control-prev, .carousel-control-next {
+    width: 20%; /* Largura dos botões */
+  }
+  
+  .carousel-control-prev {
+    left: 0;
+  }
+  
+  .carousel-control-next {
+    right: 0;
+  }
+  
+  /* Ajuste para garantir que os botões não fiquem fora da imagem */
+  .carousel {
+    overflow: hidden;
+  }
+  

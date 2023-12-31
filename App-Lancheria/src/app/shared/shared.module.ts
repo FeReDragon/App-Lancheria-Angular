@@ -4,7 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
-
+import { RouterModule } from '@angular/router'; 
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     CommonModule,
+    RouterModule
     // Outros módulos...
   ],
   exports: [
