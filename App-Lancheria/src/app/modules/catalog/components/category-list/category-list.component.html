@@ -1,1 +1,10 @@
-<p>category-list works!</p>
+<div class="container">
+  <h2 class="text-center mb-4">Categorias</h2>
+  <div class="row g-3">
+    <div class="col-md-4" *ngFor="let categoria of categorias">
+      <button type="button" class="list-group-item list-group-item-action text-center" style="width: 100%; border: 1px solid #ddd;">
+        {{ categoria.nome }}
+      </button>
+    </div>
+  </div>
+</div>

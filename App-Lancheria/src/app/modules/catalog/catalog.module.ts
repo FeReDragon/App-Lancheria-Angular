@@ -7,6 +7,7 @@ import { CategoryItemComponent } from './components/category-item/category-item.
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { InventoryManagementComponent } from './components/inventory-management/inventory-management.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { InventoryManagementComponent } from './components/inventory-management/
   ],
   imports: [
     CommonModule,
-    CatalogRoutingModule
+    CatalogRoutingModule,
+    SharedModule
   ]
 })
 export class CatalogModule { }

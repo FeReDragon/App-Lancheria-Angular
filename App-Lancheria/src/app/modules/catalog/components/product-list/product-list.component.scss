@@ -1,0 +1,10 @@
+.card-img-custom {
+    width: 100%;       /* Largura total do card */
+    height: 160px;     /* Altura um pouco menor para compensar mais colunas */
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
+  }
+  
+  .card-custom {
+    height: 380px; /* Altura ajustada */
+  }
+  
