@@ -19,7 +19,6 @@ export class CartService {
   }
 
   adicionarAoCarrinho(usuarioId: number, produto: Produto, quantidade: number = 1): Observable<Cart> {
-    // Recupera o carrinho, modifica-o e salva as alterações no servidor
     return this.getCart(usuarioId).pipe(
       map(cart => {
         const itemExistente = cart.itens.find(item => item.produtoId === produto.id);
@@ -42,7 +41,6 @@ export class CartService {
   }
 
   removerItem(usuarioId: number, produtoId: number): Observable<Cart> {
-    // Recupera o carrinho, remove o item e salva as alterações no servidor
     return this.getCart(usuarioId).pipe(
       map(cart => {
         cart.itens = cart.itens.filter(item => item.produtoId !== produtoId);
@@ -53,7 +51,6 @@ export class CartService {
   }
 
   private atualizarCarrinho(cart: Cart): void {
-    // Envia o carrinho atualizado para o servidor
     this.http.put<Cart>(`${this.apiUrl}/${cart.usuarioId}`, cart).subscribe();
     cart.totalItens = cart.itens.reduce((total, item) => total + item.quantidade, 0);
     cart.totalPreco = cart.itens.reduce((total, item) => total + item.preco * item.quantidade, 0);

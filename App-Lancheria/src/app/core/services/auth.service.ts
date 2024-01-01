@@ -9,15 +9,15 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User | null>; // Modificado para aceitar User ou null
-  public currentUser: Observable<User | null>; // Modificado para emitir User ou null
+  private currentUserSubject: BehaviorSubject<User | null>; 
+  public currentUser: Observable<User | null>; 
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(localStorage.getItem('currentUser') ?? '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User | null { // Retorna User ou null
+  public get currentUserValue(): User | null { 
     return this.currentUserSubject.value;
   }
 
