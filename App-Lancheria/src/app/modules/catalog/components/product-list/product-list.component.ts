@@ -14,6 +14,8 @@ export class ProductListComponent implements OnInit {
   categorias: Category[] = [];
   produtos: Produto[] = [];
   selectedCategoriaId?: number;
+  produtoSelecionado?: Produto;
+  quantidadeSelecionada: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -53,9 +55,11 @@ export class ProductListComponent implements OnInit {
   }  
 
   adicionarAoCarrinho(produto: Produto) {
-    this.cartService.adicionarAoCarrinho(produto);
-    // Adicione lógica adicional se necessário, como exibir uma notificação
+    const usuarioId = 0; // Substitua pelo ID do usuário real
+    this.cartService.adicionarAoCarrinho(usuarioId, produto).subscribe(cart => {
+      // Lógica após adicionar ao carrinho, como atualizar a UI
+    });
   }
-  
+
 }
 

@@ -11,22 +11,27 @@ export class CartViewComponent implements OnInit {
   cart: Cart = {
     itens: [],
     totalItens: 0,
-    totalPreco: 0
+    totalPreco: 0,
+    usuarioId: 0
   };
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    // Carrega os itens do carrinho do CartService
-    this.cart = this.cartService.getCart();
+    const usuarioId = 0; // Substitua pelo ID do usuário real
+    this.cartService.getCart(usuarioId).subscribe(cart => {
+      this.cart = cart;
+    });
   }
 
   removerItem(item: CartItem) {
-    // Remove um item do carrinho
-    this.cartService.removerItem(item.produtoId);
+    const usuarioId = 0; // Substitua pelo ID do usuário real
+    this.cartService.removerItem(usuarioId, item.produtoId).subscribe(cart => {
+      this.cart = cart;
+    });
   }
 
   calcularTotal() {
-    return this.cartService.getCart().totalPreco;
+    return this.cart.totalPreco; // Isso deve ser ajustado se você desejar atualizar o total dinamicamente
   }
 }
