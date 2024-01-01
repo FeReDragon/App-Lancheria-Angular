@@ -13,10 +13,20 @@
           <li class="ms-3"><a href="#"><i class="fab fa-instagram fa-2x"></i></a></li>
           <li class="ms-3"><a href="#"><i class="fab fa-facebook-f fa-2x"></i></a></li>
       </ul>
+      <!-- Botões condicionais -->
+    <div *ngIf="currentUser; else loginRegisterBlock" class="col-md-3 text-end">
+      <span class="me-2">Olá, {{ currentUser.nome }}</span>
+      <button type="button" class="btn btn-outline-primary" (click)="logout()">Logout</button>
+    </div>
+    
+    <!-- Template para Login e Registro -->
+    <ng-template #loginRegisterBlock>
       <div class="col-md-3 text-end">
-          <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
-          <button type="button" class="btn btn-primary" routerLink="/registro">Registrar</button>
+        <button type="button" class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+        <button type="button" class="btn btn-primary" routerLink="/registro">Registrar</button>
       </div>
+    </ng-template>
   </header>
 </div>
+
 
