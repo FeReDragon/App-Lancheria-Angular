@@ -4,6 +4,7 @@ import { ProductService } from '../../../../core/services/product.service';
 import { Category } from '../../../../shared/model/category.model';
 import { CategoryService } from '../../../../core/services/category.service';
 import { CartService } from '../../../../core/services/cart.service'; // Importe o CartService
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-product-list',
@@ -20,7 +21,8 @@ export class ProductListComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private categoryService: CategoryService,
-    private cartService: CartService // Injete o CartService
+    private cartService: CartService, // Injete o CartService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -55,11 +57,18 @@ export class ProductListComponent implements OnInit {
   }  
 
   adicionarAoCarrinho(produto: Produto) {
-    const usuarioId = 0; // Substitua pelo ID do usuário real
-    this.cartService.adicionarAoCarrinho(usuarioId, produto).subscribe(cart => {
-      // Lógica após adicionar ao carrinho, como atualizar a UI
-    });
+    const usuarioAtual = this.authService.currentUserValue;
+    if (usuarioAtual && usuarioAtual.id) {
+      // Certifique-se de que o id é um número válido e não zero
+      this.cartService.adicionarAoCarrinho(usuarioAtual.id, produto).subscribe(cart => {
+        // Lógica de sucesso
+      });
+    } else {
+      // Lógica caso não haja um usuário logado ou se o id não for válido
+    }
   }
+  
+  
 
 }
 

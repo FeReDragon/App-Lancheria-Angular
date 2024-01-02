@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../../../../shared/model/cart.model';
 import { CartService } from '../../../../core/services/cart.service';
+import { AuthService } from '../../../../core/services/auth.service'; // Importe o AuthService
 
 @Component({
   selector: 'app-cart-view',
@@ -15,23 +16,33 @@ export class CartViewComponent implements OnInit {
     usuarioId: 0
   };
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private authService: AuthService) {} // Injete o AuthService
 
   ngOnInit() {
-    const usuarioId = 0; // Substitua pelo ID do usuário real
-    this.cartService.getCart(usuarioId).subscribe(cart => {
-      this.cart = cart;
-    });
+    const usuarioAtual = this.authService.currentUserValue; 
+    const usuarioId = usuarioAtual ? usuarioAtual.id : null; 
+
+    if (usuarioId) {
+      this.cartService.getCart(usuarioId).subscribe(cart => {
+        this.cart = cart || this.cart; // Se 'cart' for null, mantém o valor inicial
+      });
+    }
+    // lógica alternativa aqui se usuarioId for null
   }
 
   removerItem(item: CartItem) {
-    const usuarioId = 0; // Substitua pelo ID do usuário real
-    this.cartService.removerItem(usuarioId, item.produtoId).subscribe(cart => {
-      this.cart = cart;
-    });
+    // Esta função também precisa do ID do usuário autenticado
+    const usuarioId = this.authService.currentUserValue ? this.authService.currentUserValue.id : null;
+
+    if (usuarioId) {
+      this.cartService.removerItem(usuarioId, item.produtoId).subscribe(cart => {
+        this.cart = cart || this.cart; // Se 'cart' for null, mantém o valor inicial
+      });
+    }
+    // Adicione lógica alternativa aqui se usuarioId for null
   }
 
   calcularTotal() {
-    return this.cart.totalPreco; // Isso deve ser ajustado se você desejar atualizar o total dinamicamente
+    return this.cart.totalPreco;
   }
 }
