@@ -11,4 +11,13 @@ export interface Order {
     dataPedido: Date;
     status: string; // Exemplos: "pendente", "completado", "cancelado", etc.
     total: number; // Soma total do pedido
+
+    // Detalhes de endereço
+    bairro: string;
+    endereco: string;
+    cidade: string;
+    cep: string;
+
+    // Adicionando a propriedade método de pagamento
+    metodoPagamento: string;
 }
