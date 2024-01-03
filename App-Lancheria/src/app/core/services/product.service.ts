@@ -19,6 +19,10 @@ export class ProductService {
   getProdutosPorCategoria(categoriaId: number): Observable<Produto[]> {
     return this.http.get<Produto[]>(`${this.apiUrl}?categoriaId=${categoriaId}`);
   }
+  getProdutosPorCategoriaNome(categoriaNome: string): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.apiUrl + '?categoria=' + categoriaNome);
+  }
+  
 
   adicionarProduto(produto: Produto): Observable<Produto> {
     // Garanta que 'categoriaId' está sendo enviado corretamente
