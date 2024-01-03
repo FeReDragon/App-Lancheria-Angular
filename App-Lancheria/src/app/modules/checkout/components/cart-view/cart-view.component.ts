@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../../../../shared/model/cart.model';
 import { CartService } from '../../../../core/services/cart.service';
 import { AuthService } from '../../../../core/services/auth.service'; // Importe o AuthService
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-view',
@@ -16,7 +17,7 @@ export class CartViewComponent implements OnInit {
     usuarioId: 0
   };
 
-  constructor(private cartService: CartService, private authService: AuthService) {} // Injete o AuthService
+  constructor(private cartService: CartService, private authService: AuthService, private router: Router) {} // Injete o AuthService
 
   ngOnInit() {
     const usuarioAtual = this.authService.currentUserValue; 
@@ -44,5 +45,9 @@ export class CartViewComponent implements OnInit {
 
   calcularTotal() {
     return this.cart.totalPreco;
+  }
+
+  finalizarPedido() {
+    this.router.navigate(['/pedido']); // Navega para a rota do OrderCreateComponent
   }
 }

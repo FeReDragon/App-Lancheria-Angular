@@ -1,1 +1,19 @@
-<p>order-summary works!</p>
+<app-navbar></app-navbar> 
+
+    <div class="container my-5">
+
+<div class="order-summary">
+    <h2>Resumo dos Pedidos</h2>
+    <div *ngIf="pedidos.length === 0">Nenhum pedido encontrado.</div>
+    <div *ngFor="let pedido of pedidos">
+      <h3>Pedido #{{ pedido.id }}</h3>
+      <p>Status: {{ pedido.status }}</p>
+      <p>Data do Pedido: {{ pedido.dataPedido | date }}</p>
+      <p>Total: {{ pedido.total | currency }}</p>
+      <!-- Adicione mais detalhes conforme necessário -->
+    </div>
+  </div>
+  
+</div>
+  
+<app-footer></app-footer>

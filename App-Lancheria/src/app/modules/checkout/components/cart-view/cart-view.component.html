@@ -32,7 +32,8 @@
     </table>
     <div class="text-end" *ngIf="cart">
       <h3>Total: {{ calcularTotal() | currency }}</h3>
-      <!-- <button class="btn btn-success" (click)="checkout()">Finalizar Pedido</button> -->
+      <!-- Outras partes do template... -->
+      <button class="btn btn-success" (click)="finalizarPedido()">Finalizar Pedido</button>
     </div>
   </div>
   <br><br>
