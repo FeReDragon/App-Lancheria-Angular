@@ -55,14 +55,25 @@ export class CartService {
   }
 
   removerItem(usuarioId: number, produtoId: number): Observable<Cart> {
-    // Sua lógica para remover um item do carrinho
-    // Pode ser uma requisição HTTP DELETE ou PUT
-    return this.http.delete<Cart>(`${this.apiUrl}/${usuarioId}/itens/${produtoId}`).pipe(
-      catchError(error => {
-        return throwError(error);
+    return this.getCart(usuarioId).pipe(
+      switchMap(cart => {
+        if (!cart) {
+          return throwError('Carrinho não encontrado.');
+        }
+  
+        // Remover o item do array de itens do carrinho
+        cart.itens = cart.itens.filter(item => item.produtoId !== produtoId);
+  
+        // Atualizar totalItens e totalPreco
+        cart.totalItens = cart.itens.reduce((total, item) => total + item.quantidade, 0);
+        cart.totalPreco = cart.itens.reduce((total, item) => total + item.preco * item.quantidade, 0);
+  
+        // Atualizar o carrinho no servidor
+        return this.atualizarCarrinho(cart);
       })
     );
   }
+  
 
 
   private adicionarItemAoCarrinho(cart: Cart, produto: Produto, quantidade: number): Observable<Cart> {
@@ -87,5 +98,17 @@ export class CartService {
   
   private criarCarrinho(cart: Cart): Observable<Cart> {
     return this.http.post<Cart>(this.apiUrl, cart);
+  }
+
+
+  limparCarrinho(usuarioId: number): Observable<any> {
+    // Atualiza o carrinho para vazio para o usuário
+    const carrinhoVazio: Cart = {
+      usuarioId: usuarioId,
+      itens: [],
+      totalItens: 0,
+      totalPreco: 0
+    };
+    return this.atualizarCarrinho(carrinhoVazio);
   }
 }

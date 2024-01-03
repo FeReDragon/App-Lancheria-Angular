@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Order } from 'src/app/shared/model/order.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +13,8 @@ export class OrdersService {
 
   createOrder(orderData: any): Observable<any> {
     return this.http.post(this.apiUrl, orderData);
+  }
+  getOrdersByUserId(userId: number): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrl}?usuarioId=${userId}`);
   }
 }
