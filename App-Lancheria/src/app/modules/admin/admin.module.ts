@@ -7,6 +7,8 @@ import { ManageProductsComponent } from './components/manage-products/manage-pro
 import { OrderManagementComponent } from './components/order-management/order-management.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { InventoryManagementComponent } from './components/inventory-management/inventory-management.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { InventoryManagementComponent } from './components/inventory-management/
     ManageProductsComponent,
     OrderManagementComponent,
     AnalyticsComponent,
-    InventoryManagementComponent
+    InventoryManagementComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule,
+    FormsModule
+
   ]
 })
 export class AdminModule { }
