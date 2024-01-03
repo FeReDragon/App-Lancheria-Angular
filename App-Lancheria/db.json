@@ -55,47 +55,371 @@
       "id": 6,
       "nome": "Bebidas",
       "descricao": "Bebidas refrescantes e variadas"
-    }  
+    }
   ],
   "produtos": [
-    {"id": 1, "nome": "X-Burger", "descricao": "Hambúrguer com queijo, alface, tomate e molho especial", "preco": 12.99, "categoriaId": 1, "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"},
-    {"id": 2, "nome": "X-Salada", "descricao": "Hambúrguer com queijo, alface, tomate, ovo e maionese", "preco": 14.50, "categoriaId": 1, "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"},
-    {"id": 3, "nome": "Hot Dog", "descricao": "Cachorro-quente com salsicha, milho, ervilha e molho", "preco": 7.99, "categoriaId": 1, "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"},
-    {"id": 4, "nome": "Sanduíche de Frango", "descricao": "Pão com filé de frango grelhado, alface e tomate", "preco": 10.50, "categoriaId": 1, "imagemUrl": "https://www.pngitem.com/pimgs/m/112-1128456_sandwiches-png-chicken-mayo-sandwich-png-transparent-png.png"},
-    {"id": 5, "nome": "Veggie Burger", "descricao": "Hambúrguer vegetariano com queijo, alface e molho especial", "preco": 11.99, "categoriaId": 1, "imagemUrl": "http://lozhka-povarezhka.ru/wp-content/uploads/2020/03/burgeri-dlya-veganov-1.jpg"},
-
-    {"id": 6, "nome": "Batata Frita", "descricao": "Porção de batatas fritas crocantes", "preco": 5.99, "categoriaId": 2, "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png"},
-    {"id": 7, "nome": "Anéis de Cebola", "descricao": "Porção de anéis de cebola empanados", "preco": 6.50, "categoriaId": 2, "imagemUrl": "https://i.pinimg.com/originals/a4/80/52/a48052a6fdaea4b4d1510ebf3f744abd.png"},
-    {"id": 8, "nome": "Frango à Passarinho", "descricao": "Porção de pedaços de frango fritos e temperados", "preco": 8.99, "categoriaId": 2, "imagemUrl": "https://i.pinimg.com/736x/be/0d/45/be0d454e0fec09acec6dbb91e1eaabbd.jpg"},
-    {"id": 9, "nome": "Mandioca Frita", "descricao": "Porção de mandioca frita crocante", "preco": 7.00, "categoriaId": 2, "imagemUrl": "https://steemitimages.com/p/3zpz8WA8faruStjgYgkSUJ6rDjbo6HArDHGT5viHe8tbQcuSH1CQijMeJprynR698oP2TJHvNzbDVB68PzwoeLqjDwu4sQTso95obpgFf6932QDHn7uE4cJ8N2P3eo4WXQcoCBDdXsk1qvZb5fqp?format=match&mode=fit&width=1280"},
-    {"id": 10, "nome": "Bolinho de Bacalhau", "descricao": "Porção de bolinhos de bacalhau tradicionais", "preco": 9.99, "categoriaId": 2, "imagemUrl": "http://placestovisitbrazil.com/wp-content/uploads/2016/08/Bolinho-brazilian-food-1024x682.jpg"},
-
-
-    {"id": 11, "nome": "Pizza Margherita", "descricao": "Pizza com molho de tomate, mussarela, manjericão e azeite de oliva", "preco": 22.00, "categoriaId": 3, "imagemUrl": "https://img.quizur.com/f/img5c104c0ae885a4.62715723.jpg?lastEdited=1544571927"},
-    {"id": 12, "nome": "Pizza de Calabresa", "descricao": "Pizza com calabresa, cebola e azeitonas", "preco": 24.00, "categoriaId": 3, "imagemUrl": "https://vovozitareceitas.com/wp-content/uploads/2020/09/pizza-calabresa.jpg"},
-    {"id": 13, "nome": "Pizza Quatro Queijos", "descricao": "Pizza com quatro tipos de queijo: mussarela, gorgonzola, parmesão e catupiry", "preco": 25.50, "categoriaId": 3, "imagemUrl": "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-1932-5a1b7911dfda6e3c351c30de564da267.jpg"},
-    {"id": 14, "nome": "Pizza Portuguesa", "descricao": "Pizza com presunto, ovo, cebola, pimentão e azeitonas", "preco": 23.00, "categoriaId": 3, "imagemUrl": "https://avatars.mds.yandex.net/i?id=731f447e2d59529d5ba06a778a20869183f771b7-9390856-images-thumbs&n=13"},
-    {"id": 15, "nome": "Pizza Vegetariana", "descricao": "Pizza com variedade de vegetais e mussarela", "preco": 22.50, "categoriaId": 3, "imagemUrl": "https://dwormarcinkowo.pl/wp-content/uploads/2020/03/Pizza-Vegetariana.jpg"},
-
-
-    {"id": 16, "nome": "Torta de Limão", "descricao": "Fatia de torta de limão com merengue", "preco": 5.50, "categoriaId": 4, "imagemUrl": "url-tortalimao.jpg"},
-    {"id": 17, "nome": "Pudim de Leite", "descricao": "Pudim de leite condensado caramelizado", "preco": 4.99, "categoriaId": 4, "imagemUrl": "url-pudim.jpg"},
-    {"id": 18, "nome": "Mousse de Chocolate", "descricao": "Mousse de chocolate cremoso", "preco": 6.00, "categoriaId": 4, "imagemUrl": "url-moussechocolate.jpg"},
-    {"id": 19, "nome": "Cheesecake de Morango", "descricao": "Fatia de cheesecake com cobertura de morango", "preco": 7.50, "categoriaId": 4, "imagemUrl": "url-cheesecake.jpg"},
-    {"id": 20, "nome": "Petit Gateau", "descricao": "Bolo de chocolate com interior cremoso, servido com sorvete de creme", "preco": 8.99, "categoriaId": 4, "imagemUrl": "url-petitgateau.jpg"},
-
-    
-    {"id": 21, "nome": "Salada Caesar", "descricao": "Alface, croutons, queijo parmesão, molho caesar e frango grelhado", "preco": 12.50, "categoriaId": 5, "imagemUrl": "url-saladacaesar.jpg"},
-    {"id": 22, "nome": "Salada Caprese", "descricao": "Tomate, mussarela de búfala, manjericão e azeite de oliva", "preco": 11.00, "categoriaId": 5, "imagemUrl": "url-saladacaprese.jpg"},
-    {"id": 23, "nome": "Salada de Atum", "descricao": "Alface, tomate, cebola, atum e azeitonas", "preco": 13.99, "categoriaId": 5, "imagemUrl": "url-saladaatum.jpg"},
-    {"id": 24, "nome": "Salada Grega", "descricao": "Pepino, tomate, cebola, azeitonas pretas, queijo feta e azeite", "preco": 12.99, "categoriaId": 5, "imagemUrl": "url-saladagrega.jpg"},
-    {"id": 25, "nome": "Salada de Frango", "descricao": "Alface, tomate, frango grelhado e molho de mostarda e mel", "preco": 14.00, "categoriaId": 5, "imagemUrl": "url-saladafrango.jpg"},
-    {"id": 26,"nome": "Coca-Cola","descricao": "Refrigerante de cola 350ml","preco": 3.50,"categoriaId": 6,"imagemUrl": "url-da-imagem-coca.jpg"},
-    {"id": 27,"nome": "Água Mineral","descricao": "Garrafa de água mineral sem gás 500ml","preco": 2.00,"categoriaId": 6,"imagemUrl": "url-da-imagem-agua.jpg"},
-    {"id": 28,"nome": "Suco Natural de Laranja","descricao": "Suco de laranja natural, espremido na hora 300ml","preco": 4.50,"categoriaId": 6,"imagemUrl": "url-da-imagem-suco-laranja.jpg"},
-    {"id": 29,"nome": "Chá Gelado","descricao": "Chá gelado caseiro de pêssego 300ml","preco": 4.00,"categoriaId": 6,"imagemUrl": "url-da-imagem-cha-gelado.jpg"},
-    {"id": 30,"nome": "Cerveja Artesanal","descricao": "Cerveja artesanal tipo IPA 350ml","preco": 6.00,"categoriaId": 6,"imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"}
+    {
+      "id": 1,
+      "nome": "X-Burger",
+      "descricao": "Hambúrguer com queijo, alface, tomate e molho especial",
+      "preco": 12.99,
+      "categoria": "Lanches",
+      "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "X-Salada",
+      "descricao": "Hambúrguer com queijo, alface, tomate, ovo e maionese",
+      "preco": 14.5,
+      "categoria": "Lanches",
+      "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Hot Dog",
+      "descricao": "Cachorro-quente com salsicha, milho, ervilha e molho",
+      "preco": 7.99,
+      "categoria": "Lanches",
+      "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+    },
+    {
+      "id": 4,
+      "nome": "Sanduíche de Frango",
+      "descricao": "Pão com filé de frango grelhado, alface e tomate",
+      "preco": 10.5,
+      "categoria": "Lanches",
+      "imagemUrl": "https://www.pngitem.com/pimgs/m/112-1128456_sandwiches-png-chicken-mayo-sandwich-png-transparent-png.png"
+    },
+    {
+      "id": 5,
+      "nome": "Veggie Burger",
+      "descricao": "Hambúrguer vegetariano com queijo, alface e molho especial",
+      "preco": 11.99,
+      "categoria": "Lanches",
+      "imagemUrl": "http://lozhka-povarezhka.ru/wp-content/uploads/2020/03/burgeri-dlya-veganov-1.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Batata Frita",
+      "descricao": "Porção de batatas fritas crocantes",
+      "preco": 5.99,
+      "categoria": "Porções",
+      "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png"
+    },
+    {
+      "id": 7,
+      "nome": "Anéis de Cebola",
+      "descricao": "Porção de anéis de cebola empanados",
+      "preco": 6.5,
+      "categoria": "Porções",
+      "imagemUrl": "https://i.pinimg.com/originals/a4/80/52/a48052a6fdaea4b4d1510ebf3f744abd.png"
+    },
+    {
+      "id": 8,
+      "nome": "Frango à Passarinho",
+      "descricao": "Porção de pedaços de frango fritos e temperados",
+      "preco": 8.99,
+      "categoria": "Porções",
+      "imagemUrl": "https://i.pinimg.com/736x/be/0d/45/be0d454e0fec09acec6dbb91e1eaabbd.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "Mandioca Frita",
+      "descricao": "Porção de mandioca frita crocante",
+      "preco": 7.99,
+      "categoria": "Porções",
+      "imagemUrl": "https://steemitimages.com/p/3zpz8WA8faruStjgYgkSUJ6rDjbo6HArDHGT5viHe8tbQcuSH1CQijMeJprynR698oP2TJHvNzbDVB68PzwoeLqjDwu4sQTso95obpgFf6932QDHn7uE4cJ8N2P3eo4WXQcoCBDdXsk1qvZb5fqp?format=match&mode=fit&width=1280"
+    },
+    {
+      "id": 10,
+      "nome": "Bolinho de Bacalhau",
+      "descricao": "Porção de bolinhos de bacalhau tradicionais",
+      "preco": 9.99,
+      "categoria": "Porções",
+      "imagemUrl": "http://placestovisitbrazil.com/wp-content/uploads/2016/08/Bolinho-brazilian-food-1024x682.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "Pizza Margherita",
+      "descricao": "Pizza com molho de tomate, mussarela, manjericão e azeite de oliva",
+      "preco": 22,
+      "categoria": "Pizzas",
+      "imagemUrl": "https://img.quizur.com/f/img5c104c0ae885a4.62715723.jpg?lastEdited=1544571927"
+    },
+    {
+      "id": 12,
+      "nome": "Pizza de Calabresa",
+      "descricao": "Pizza com calabresa, cebola e azeitonas",
+      "preco": 24,
+      "categoria": "Pizzas",
+      "imagemUrl": "https://vovozitareceitas.com/wp-content/uploads/2020/09/pizza-calabresa.jpg"
+    },
+    {
+      "id": 13,
+      "nome": "Pizza Quatro Queijos",
+      "descricao": "Pizza com quatro tipos de queijo: mussarela, gorgonzola, parmesão e catupiry",
+      "preco": 25.5,
+      "categoria": "Pizzas",
+      "imagemUrl": "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-1932-5a1b7911dfda6e3c351c30de564da267.jpg"
+    },
+    {
+      "id": 14,
+      "nome": "Pizza Portuguesa",
+      "descricao": "Pizza com presunto, ovo, cebola, pimentão e azeitonas",
+      "preco": 23,
+      "categoria": "Pizzas",
+      "imagemUrl": "https://avatars.mds.yandex.net/i?id=731f447e2d59529d5ba06a778a20869183f771b7-9390856-images-thumbs&n=13"
+    },
+    {
+      "id": 15,
+      "nome": "Pizza Vegetariana",
+      "descricao": "Pizza com variedade de vegetais e mussarela",
+      "preco": 22.5,
+      "categoria": "Pizzas",
+      "imagemUrl": "https://dwormarcinkowo.pl/wp-content/uploads/2020/03/Pizza-Vegetariana.jpg"
+    },
+    {
+      "id": 16,
+      "nome": "Torta de Limão",
+      "descricao": "Fatia de torta de limão com merengue",
+      "preco": 5.5,
+      "categoria": "Sobremesas",
+      "imagemUrl": "url-tortalimao.jpg"
+    },
+    {
+      "id": 17,
+      "nome": "Pudim de Leite",
+      "descricao": "Pudim de leite condensado caramelizado",
+      "preco": 4.99,
+      "categoria": "Sobremesas",
+      "imagemUrl": "url-pudim.jpg"
+    },
+    {
+      "id": 18,
+      "nome": "Mousse de Chocolate",
+      "descricao": "Mousse de chocolate cremoso",
+      "preco": 6,
+      "categoria": "Sobremesas",
+      "imagemUrl": "url-moussechocolate.jpg"
+    },
+    {
+      "id": 19,
+      "nome": "Cheesecake de Morango",
+      "descricao": "Fatia de cheesecake com cobertura de morango",
+      "preco": 7.5,
+      "categoria": "Sobremesas",
+      "imagemUrl": "url-cheesecake.jpg"
+    },
+    {
+      "id": 20,
+      "nome": "Petit Gateau",
+      "descricao": "Bolo de chocolate com interior cremoso, servido com sorvete de creme",
+      "preco": 8.99,
+      "categoria": "Sobremesas",
+      "imagemUrl": "url-petitgateau.jpg"
+    },
+    {
+      "id": 21,
+      "nome": "Salada Caesar",
+      "descricao": "Alface, croutons, queijo parmesão, molho caesar e frango grelhado",
+      "preco": 12.5,
+      "categoria": "Saladas",
+      "imagemUrl": "url-saladacaesar.jpg"
+    },
+    {
+      "id": 22,
+      "nome": "Salada Caprese",
+      "descricao": "Tomate, mussarela de búfala, manjericão e azeite de oliva",
+      "preco": 11,
+      "categoria": "Saladas",
+      "imagemUrl": "url-saladacaprese.jpg"
+    },
+    {
+      "id": 23,
+      "nome": "Salada de Atum",
+      "descricao": "Alface, tomate, cebola, atum e azeitonas",
+      "preco": 13.99,
+      "categoria": "Saladas",
+      "imagemUrl": "url-saladaatum.jpg"
+    },
+    {
+      "id": 24,
+      "nome": "Salada Grega",
+      "descricao": "Pepino, tomate, cebola, azeitonas pretas, queijo feta e azeite",
+      "preco": 12.99,
+      "categoria": "Saladas",
+      "imagemUrl": "url-saladagrega.jpg"
+    },
+    {
+      "id": 25,
+      "nome": "Salada de Frango",
+      "descricao": "Alface, tomate, frango grelhado e molho de mostarda e mel",
+      "preco": 14,
+      "categoria": "Saladas",
+      "imagemUrl": "url-saladafrango.jpg"
+    },
+    {
+      "id": 27,
+      "nome": "Água Mineral",
+      "descricao": "Garrafa de água mineral sem gás 500ml",
+      "preco": 2,
+      "categoria": "Bebidas",
+      "imagemUrl": "url-da-imagem-agua.jpg"
+    },
+    {
+      "id": 30,
+      "nome": "Cerveja Artesanal",
+      "descricao": "Cerveja artesanal tipo IPA 350ml",
+      "preco": 6,
+      "categoria": "Bebidas",
+      "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+    },
+    {
+      "id": 31,
+      "nome": "x-moda casa",
+      "descricao": "asdasd",
+      "preco": 17,
+      "categoria": "Lanches",
+      "imagemUrl": ""
+    },
+    {
+      "id": 32,
+      "nome": "x-gaucho",
+      "descricao": "dsdsd",
+      "preco": 30,
+      "categoria": "Lanches",
+      "imagemUrl": ""
+    },
+    {
+      "id": 33,
+      "nome": "x-salada do pai ",
+      "descricao": "pao hamburger salada do pai ",
+      "preco": 20,
+      "categoria": "Lanches",
+      "imagemUrl": "https://i.pinimg.com/736x/b2/09/7c/b2097c93395b6b9166eb6c7851f8aedb.jpg"
+    }
   ],
-  "carrinho": [],
-  "pedidos": []
+  "carrinho": [
+    {
+      "usuarioId": 1,
+      "itens": [],
+      "totalItens": 0,
+      "totalPreco": 0,
+      "id": 1
+    },
+    {
+      "usuarioId": 2,
+      "itens": [],
+      "totalItens": 0,
+      "totalPreco": 0,
+      "id": 2
+    }
+  ],
+  "pedidos": [
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 7.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        }
+      ],
+      "dataPedido": "2024-01-02T21:18:47.867Z",
+      "status": "pendente",
+      "total": 22.490000000000002,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 1
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 30,
+          "nome": "Cerveja Artesanal",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-02T21:20:14.141Z",
+      "status": "pendente",
+      "total": 6,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 2
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 8,
+          "nome": "Frango à Passarinho",
+          "preco": 8.99,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/736x/be/0d/45/be0d454e0fec09acec6dbb91e1eaabbd.jpg"
+        },
+        {
+          "produtoId": 6,
+          "nome": "Batata Frita",
+          "preco": 5.99,
+          "quantidade": 1,
+          "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png"
+        }
+      ],
+      "dataPedido": "2024-01-02T22:03:13.071Z",
+      "status": "pendente",
+      "total": 14.98,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "88060328",
+      "metodoPagamento": "cartao",
+      "id": 3
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 31,
+          "nome": "x-moda casa",
+          "preco": 17,
+          "quantidade": 1,
+          "imagemUrl": ""
+        },
+        {
+          "produtoId": 32,
+          "nome": "x-gaucho",
+          "preco": 30,
+          "quantidade": 1,
+          "imagemUrl": ""
+        }
+      ],
+      "dataPedido": "2024-01-03T17:34:35.427Z",
+      "status": "pendente",
+      "total": 47,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "boleto",
+      "id": 4
+    }
+  ]
 }
