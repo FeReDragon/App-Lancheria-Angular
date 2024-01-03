@@ -1,1 +1,42 @@
-<p>manage-products works!</p>
+<app-navbar></app-navbar>
+
+<div class="container manage-products">
+    <h2 class="my-4 text-center">Gerenciamento de Produtos</h2>
+    <button class="btn btn-success mt-3 mb-3" (click)="produtoEditando = criarProdutoVazio()">Adicionar Novo Produto</button>
+
+    <div class="row mb-3" *ngIf="produtoEditando">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-group">
+                <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.nome" placeholder="Nome">
+                <textarea class="form-control mb-2" [(ngModel)]="produtoEditando.descricao" placeholder="Descrição"></textarea>
+                <input type="number" class="form-control mb-2" [(ngModel)]="produtoEditando.preco" placeholder="Preço">
+                
+                <!-- Seletor de Categoria -->
+                <select class="form-control mb-2" [(ngModel)]="produtoEditando.categoria">
+                    <option *ngFor="let categoria of categorias" [value]="categoria.nome">{{ categoria.nome }}</option>
+                </select>
+
+                <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.imagemUrl" placeholder="URL da Imagem">
+                <button class="btn btn-primary" (click)="salvarProduto()">Salvar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lista de produtos como mini-cards -->
+    <div class="row">
+        <div class="col-md-4 col-lg-2 mb-3" *ngFor="let produto of produtos">
+            <div class="card">
+                <img [src]="produto.imagemUrl" class="card-img-top" alt="Imagem do Produto" style="height: 100px; object-fit: cover;">
+                <div class="card-body">
+                    <h6 class="card-title">{{ produto.nome }}</h6>
+                    <p class="card-text">{{ produto.preco | currency }}</p>
+                    <button class="btn btn-secondary btn-sm" (click)="iniciarEdicao(produto)">Editar</button>
+                    <button class="btn btn-danger btn-sm" (click)="excluirProduto(produto.id)">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer>
+
