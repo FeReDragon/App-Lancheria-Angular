@@ -17,6 +17,8 @@ export class ProductListComponent implements OnInit {
   selectedCategoriaId?: number;
   produtoSelecionado?: Produto;
   quantidadeSelecionada: number = 1;
+  selectedCategoriaNome?: string;
+
 
   constructor(
     private productService: ProductService,
@@ -38,8 +40,8 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProdutos() {
-    if (this.selectedCategoriaId) {
-      this.productService.getProdutosPorCategoria(this.selectedCategoriaId).subscribe(
+    if (this.selectedCategoriaNome) {
+      this.productService.getProdutosPorCategoriaNome(this.selectedCategoriaNome).subscribe(
         data => this.produtos = data,
         error => console.error(error)
       );
@@ -50,11 +52,14 @@ export class ProductListComponent implements OnInit {
       );
     }
   }
+  
 
-  onCategoriaSelecionada(id: number) {
-    this.selectedCategoriaId = id;
+  onCategoriaSelecionada(categoriaNome: string) {
+    this.selectedCategoriaNome = categoriaNome;
     this.loadProdutos();
-  }  
+  }
+  
+   
 
   adicionarAoCarrinho(produto: Produto) {
     const usuarioAtual = this.authService.currentUserValue;
