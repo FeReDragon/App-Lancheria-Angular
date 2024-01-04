@@ -22,12 +22,12 @@ export class OrdersService {
     return this.http.get<Order[]>(this.apiUrl);
   }
 
-  atualizarOrder(orderData: Partial<Order>): Observable<any> {
+  atualizarOrder(orderData: Partial<Order>): Observable<Order> {
     if (orderData.id) {
-      return this.http.put(`${this.apiUrl}/${orderData.id}`, orderData);
+      return this.http.put<Order>(`${this.apiUrl}/${orderData.id}`, orderData);
     } else {
-      // Retornar um erro se o ID não estiver presente
-      return throwError(new Error('ID do pedido não fornecido para atualização'));
+      // Lançar um erro ou retornar um Observable que indica um erro
+      return throwError(() => new Error('Pedido sem ID'));
     }
   }
 }
