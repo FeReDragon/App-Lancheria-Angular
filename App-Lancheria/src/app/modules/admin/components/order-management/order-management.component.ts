@@ -38,16 +38,17 @@ export class OrderManagementComponent implements OnInit {
   }
   
   atualizarStatus(orderId: number, novoStatus: string) {
-    const pedidoAtualizado: Partial<Order> = {
-      id: orderId,
-      status: novoStatus
-    };
-
-    this.ordersService.atualizarOrder(pedidoAtualizado).subscribe(() => {
-      // Atualização bem-sucedida
-    },
-    erro => {
-      console.error('Erro ao atualizar o pedido', erro);
-    });
+    const pedidoExistente = this.orders.find(order => order.id === orderId);
+    if (pedidoExistente) {
+      const pedidoAtualizado = { ...pedidoExistente, status: novoStatus };
+  
+      this.ordersService.atualizarOrder(pedidoAtualizado).subscribe(() => {
+        // Atualização bem-sucedida
+        // Atualizar a lista de pedidos no frontend
+      },
+      erro => {
+        console.error('Erro ao atualizar o pedido', erro);
+      });
+    }
   }
-}
+}  
