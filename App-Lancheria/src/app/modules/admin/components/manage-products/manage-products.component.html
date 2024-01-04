@@ -22,21 +22,35 @@
         </div>
     </div>
     
-    <!-- Lista de produtos como mini-cards -->
-    <div class="row">
-        <div class="col-md-4 col-lg-2 mb-3" *ngFor="let produto of produtos">
-            <div class="card">
-                <img [src]="produto.imagemUrl" class="card-img-top" alt="Imagem do Produto" style="height: 100px; object-fit: cover;">
-                <div class="card-body">
-                    <h6 class="card-title">{{ produto.nome }}</h6>
-                    <p class="card-text">{{ produto.preco | currency }}</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Imagem</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let produto of produtos">
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.descricao }}</td>
+                <td>{{ produto.preco | currency }}</td>
+                <td>{{ produto.categoria }}</td>
+                <td>
+                    <img [src]="produto.imagemUrl" alt="Imagem do Produto" style="height: 50px; object-fit: cover;">
+                </td>
+                <td>
                     <button class="btn btn-secondary btn-sm" (click)="iniciarEdicao(produto)">Editar</button>
                     <button class="btn btn-danger btn-sm" (click)="excluirProduto(produto.id)">Excluir</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
 
 <app-footer>
 

@@ -1,1 +1,50 @@
-<p>admin-dashboard works!</p>
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+      <!-- Dashboard -->
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Dashboard</div>
+          <div class="card-body">
+            <p>Aqui vão as métricas e estatísticas do sistema</p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Gerenciamento de Produtos -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Produtos Cadastrados</div>
+          <div class="card-body">
+              <h5>Total: {{ totalProdutos }}</h5>
+              <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Gerenciar Produtos</button>
+          </div>
+      </div>
+      </div>
+  
+      <!-- Gerenciamento de Pedidos -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">Gerenciamento de Pedidos</div>
+          <div class="card-body">
+            <p>Total de Pedidos: {{ totalPedidos }}</p>
+            <p>Total de Pedidos no Último Dia: {{ totalPedidosUltimoDia }}</p>
+            <app-order-management></app-order-management>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Gerenciamento de Categorias -->
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">Gerenciamento de Categorias</div>
+          <div class="card-body">
+            <p>Ferramentas para categorias</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-footer>

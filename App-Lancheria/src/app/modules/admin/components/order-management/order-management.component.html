@@ -1,1 +1,34 @@
-<p>order-management works!</p>
+<!-- order-management.component.html -->
+<div class="order-management">
+  <h2>Gerenciamento de Pedidos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID do Pedido</th>
+        <th>Usuário</th>
+        <th>Data do Pedido</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.userName }}</td>
+        <td>{{ order.dataPedido | date }}</td>
+        <td>
+          <select [(ngModel)]="order.status" (change)="atualizarStatus(order.id, order.status)">
+            <option value="pendente">Pendente</option>
+            <option value="em preparacao">Em Preparação</option>
+            <option value="entregue">Entregue</option>
+          </select>
+        </td>
+        <td>{{ order.total | currency }}</td>
+        <td>
+          <!-- Botões para ações como visualizar, editar, cancelar pedidos -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
