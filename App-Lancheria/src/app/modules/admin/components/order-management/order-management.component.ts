@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrdersService } from '../../../../core/services/orders-service.service';
 import { UserService } from '../../../../core/services/user.service';
 import { Order } from 'src/app/shared/model/order.model';
 import { User } from 'src/app/shared/model/user.model';
-import { forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, interval, Subscription } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-order-management',
   templateUrl: './order-management.component.html',
   styleUrls: ['./order-management.component.scss']
 })
-export class OrderManagementComponent implements OnInit {
-  orders: any[] = []; // Use 'any[]' para incluir a propriedade 'userName'
+export class OrderManagementComponent implements OnInit, OnDestroy {
+  orders: any[] = [];
   users: User[] = [];
+  private updateSubscription?: Subscription; // Declaração opcional
 
   constructor(
     private ordersService: OrdersService,
@@ -21,6 +22,27 @@ export class OrderManagementComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadOrders();
+
+    // Atualiza os pedidos a cada 30 segundos
+    this.updateSubscription = interval(30000)
+      .pipe(switchMap(() => this.ordersService.getOrders()))
+      .subscribe(orders => {
+        this.orders = orders.map(order => ({
+          ...order,
+          userName: this.users.find(user => user.id === order.usuarioId)?.nome || 'Desconhecido'
+        }));
+      });
+  }
+
+  ngOnDestroy() {
+    // Cancelar a inscrição para evitar vazamentos de memória
+    if (this.updateSubscription) {
+      this.updateSubscription.unsubscribe();
+    }
+  }
+
+  private loadOrders() {
     forkJoin({
       orders: this.ordersService.getOrders(),
       users: this.userService.getUsers()
@@ -36,7 +58,7 @@ export class OrderManagementComponent implements OnInit {
       this.orders = ordersWithUserName;
     });
   }
-  
+
   atualizarStatus(orderId: number, novoStatus: string) {
     const pedidoExistente = this.orders.find(order => order.id === orderId);
     if (pedidoExistente) {
