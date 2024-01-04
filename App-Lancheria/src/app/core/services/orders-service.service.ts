@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Order } from 'src/app/shared/model/order.model';
 
 @Injectable({
@@ -16,5 +16,18 @@ export class OrdersService {
   }
   getOrdersByUserId(userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.apiUrl}?usuarioId=${userId}`);
+  }
+
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.apiUrl);
+  }
+
+  atualizarOrder(orderData: Partial<Order>): Observable<any> {
+    if (orderData.id) {
+      return this.http.put(`${this.apiUrl}/${orderData.id}`, orderData);
+    } else {
+      // Retornar um erro se o ID não estiver presente
+      return throwError(new Error('ID do pedido não fornecido para atualização'));
+    }
   }
 }
