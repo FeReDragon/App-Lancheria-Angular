@@ -4,9 +4,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID do Pedido</th>
+        <th>ID</th>
         <th>Usuário</th>
-        <th>Data do Pedido</th>
+        <th>Data </th>
         <th>Status</th>
         <th>Total</th>
         <th>Ações</th>
@@ -16,7 +16,7 @@
       <tr *ngFor="let order of orders">
         <td>{{ order.id }}</td>
         <td>{{ order.userName }}</td>
-        <td>{{ order.dataPedido | date }}</td>
+        <div>{{ order.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
         <td>
           <select [(ngModel)]="order.status" (change)="atualizarStatus(order.id, order.status)">
             <option value="pendente">Pendente</option>

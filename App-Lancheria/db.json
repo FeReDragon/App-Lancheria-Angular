@@ -335,14 +335,15 @@
         }
       ],
       "dataPedido": "2024-01-02T21:18:47.867Z",
-      "status": "pendente",
+      "status": "entregue",
       "total": 22.490000000000002,
       "endereco": "",
       "bairro": "",
       "cidade": "",
       "cep": "",
       "metodoPagamento": "cartao",
-      "id": 1
+      "id": 1,
+      "userName": "fernando aurelio"
     },
     {
       "usuarioId": 2,
@@ -356,14 +357,15 @@
         }
       ],
       "dataPedido": "2024-01-02T21:20:14.141Z",
-      "status": "pendente",
+      "status": "entregue",
       "total": 6,
       "endereco": "",
       "bairro": "",
       "cidade": "",
       "cep": "",
       "metodoPagamento": "cartao",
-      "id": 2
+      "id": 2,
+      "userName": "fernando admin"
     },
     {
       "usuarioId": 1,
@@ -384,14 +386,15 @@
         }
       ],
       "dataPedido": "2024-01-02T22:03:13.071Z",
-      "status": "pendente",
+      "status": "entregue",
       "total": 14.98,
       "endereco": "",
       "bairro": "",
       "cidade": "",
       "cep": "88060328",
       "metodoPagamento": "cartao",
-      "id": 3
+      "id": 3,
+      "userName": "fernando aurelio"
     },
     {
       "usuarioId": 1,
@@ -412,14 +415,425 @@
         }
       ],
       "dataPedido": "2024-01-03T17:34:35.427Z",
-      "status": "pendente",
+      "status": "entregue",
       "total": 47,
       "endereco": "",
       "bairro": "",
       "cidade": "",
       "cep": "",
       "metodoPagamento": "boleto",
-      "id": 4
+      "id": 4,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 14,
+          "nome": "Pizza Portuguesa",
+          "preco": 23,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=731f447e2d59529d5ba06a778a20869183f771b7-9390856-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 27,
+          "nome": "Água Mineral",
+          "preco": 2,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-agua.jpg"
+        },
+        {
+          "produtoId": 30,
+          "nome": "Cerveja Artesanal",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T02:24:24.098Z",
+      "status": "entregue",
+      "total": 31,
+      "endereco": "sao joaquin",
+      "bairro": "ingleses",
+      "cidade": "floripa",
+      "cep": "8880200",
+      "metodoPagamento": "cartao",
+      "id": 5,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 6,
+          "nome": "Batata Frita",
+          "preco": 5.99,
+          "quantidade": 1,
+          "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png"
+        },
+        {
+          "produtoId": 27,
+          "nome": "Água Mineral",
+          "preco": 2,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-agua.jpg"
+        },
+        {
+          "produtoId": 30,
+          "nome": "Cerveja Artesanal",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T17:32:33.631Z",
+      "status": "entregue",
+      "total": 13.99,
+      "endereco": "sao joaquin",
+      "bairro": "",
+      "cidade": "floripa",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 6,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 7.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 12,
+          "nome": "Pizza de Calabresa",
+          "preco": 24,
+          "quantidade": 1,
+          "imagemUrl": "https://vovozitareceitas.com/wp-content/uploads/2020/09/pizza-calabresa.jpg"
+        },
+        {
+          "produtoId": 16,
+          "nome": "Torta de Limão",
+          "preco": 5.5,
+          "quantidade": 1,
+          "imagemUrl": "url-tortalimao.jpg"
+        },
+        {
+          "produtoId": 15,
+          "nome": "Pizza Vegetariana",
+          "preco": 22.5,
+          "quantidade": 1,
+          "imagemUrl": "https://dwormarcinkowo.pl/wp-content/uploads/2020/03/Pizza-Vegetariana.jpg"
+        },
+        {
+          "produtoId": 22,
+          "nome": "Salada Caprese",
+          "preco": 11,
+          "quantidade": 1,
+          "imagemUrl": "url-saladacaprese.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T18:07:13.882Z",
+      "status": "entregue",
+      "total": 85.49000000000001,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 7,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 1,
+          "nome": "X-Burger",
+          "preco": 12.99,
+          "quantidade": 1,
+          "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"
+        },
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T18:25:11.483Z",
+      "status": "entregue",
+      "total": 27.490000000000002,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 8,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 15,
+          "nome": "Pizza Vegetariana",
+          "preco": 22.5,
+          "quantidade": 1,
+          "imagemUrl": "https://dwormarcinkowo.pl/wp-content/uploads/2020/03/Pizza-Vegetariana.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T18:37:41.797Z",
+      "status": "entregue",
+      "total": 37,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 9,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 1,
+          "nome": "X-Burger",
+          "preco": 12.99,
+          "quantidade": 1,
+          "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"
+        },
+        {
+          "produtoId": 5,
+          "nome": "Veggie Burger",
+          "preco": 11.99,
+          "quantidade": 1,
+          "imagemUrl": "http://lozhka-povarezhka.ru/wp-content/uploads/2020/03/burgeri-dlya-veganov-1.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T19:17:00.450Z",
+      "status": "entregue",
+      "total": 24.98,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 10,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 2,
+      "itens": [
+        {
+          "produtoId": 18,
+          "nome": "Mousse de Chocolate",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-moussechocolate.jpg"
+        },
+        {
+          "produtoId": 19,
+          "nome": "Cheesecake de Morango",
+          "preco": 7.5,
+          "quantidade": 1,
+          "imagemUrl": "url-cheesecake.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T20:07:12.697Z",
+      "status": "entregue",
+      "total": 13.5,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 11,
+      "userName": "fernando admin"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 1,
+          "nome": "X-Burger",
+          "preco": 12.99,
+          "quantidade": 1,
+          "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"
+        },
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-04T23:18:38.820Z",
+      "status": "entregue",
+      "total": 27.490000000000002,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "boleto",
+      "id": 12,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-05T14:14:53.632Z",
+      "status": "entregue",
+      "total": 14.5,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 13,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 12,
+          "nome": "Pizza de Calabresa",
+          "preco": 24,
+          "quantidade": 1,
+          "imagemUrl": "https://vovozitareceitas.com/wp-content/uploads/2020/09/pizza-calabresa.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-05T15:47:39.498Z",
+      "status": "entregue",
+      "total": 24,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 14,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 7,
+          "nome": "Anéis de Cebola",
+          "preco": 6.5,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/originals/a4/80/52/a48052a6fdaea4b4d1510ebf3f744abd.png"
+        },
+        {
+          "produtoId": 8,
+          "nome": "Frango à Passarinho",
+          "preco": 8.99,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/736x/be/0d/45/be0d454e0fec09acec6dbb91e1eaabbd.jpg"
+        },
+        {
+          "produtoId": 30,
+          "nome": "Cerveja Artesanal",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-05T16:37:27.922Z",
+      "status": "em preparacao",
+      "total": 21.490000000000002,
+      "endereco": "rua juvenal",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 15,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 18,
+          "nome": "Mousse de Chocolate",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-moussechocolate.jpg"
+        },
+        {
+          "produtoId": 19,
+          "nome": "Cheesecake de Morango",
+          "preco": 7.5,
+          "quantidade": 1,
+          "imagemUrl": "url-cheesecake.jpg"
+        },
+        {
+          "produtoId": 20,
+          "nome": "Petit Gateau",
+          "preco": 8.99,
+          "quantidade": 1,
+          "imagemUrl": "url-petitgateau.jpg"
+        },
+        {
+          "produtoId": 24,
+          "nome": "Salada Grega",
+          "preco": 12.99,
+          "quantidade": 1,
+          "imagemUrl": "url-saladagrega.jpg"
+        },
+        {
+          "produtoId": 23,
+          "nome": "Salada de Atum",
+          "preco": 13.99,
+          "quantidade": 1,
+          "imagemUrl": "url-saladaatum.jpg"
+        },
+        {
+          "produtoId": 22,
+          "nome": "Salada Caprese",
+          "preco": 11,
+          "quantidade": 1,
+          "imagemUrl": "url-saladacaprese.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-05T17:18:38.438Z",
+      "status": "pendente",
+      "total": 60.470000000000006,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 16
     }
   ]
 }

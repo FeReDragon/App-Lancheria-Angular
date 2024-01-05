@@ -15,7 +15,7 @@ import { OrderUpdateService } from 'src/app/core/services/order-update.service';
 export class OrderManagementComponent implements OnInit, OnDestroy {
   orders: any[] = [];
   users: User[] = [];
-  private updateSubscription?: Subscription; // Declaração opcional
+  private updateSubscription?: Subscription;
 
   constructor(
     private ordersService: OrdersService,
@@ -29,16 +29,27 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
     // Atualiza os pedidos a cada 30 segundos
     this.updateSubscription = interval(30000)
       .pipe(switchMap(() => this.ordersService.getOrders()))
-      .subscribe(orders => {
-        this.orders = orders.map(order => ({
-          ...order,
-          userName: this.users.find(user => user.id === order.usuarioId)?.nome || 'Desconhecido'
-        }));
+      .subscribe(newOrders => {
+        newOrders.forEach(newOrder => {
+          const existingOrderIndex = this.orders.findIndex(order => order.id === newOrder.id);
+          if (existingOrderIndex !== -1) {
+            // Atualiza o pedido existente
+            this.orders[existingOrderIndex] = {
+              ...newOrder,
+              userName: this.users.find(user => user.id === newOrder.usuarioId)?.nome || 'Desconhecido'
+            };
+          } else {
+            // Adiciona o novo pedido no topo da lista
+            this.orders.unshift({
+              ...newOrder,
+              userName: this.users.find(user => user.id === newOrder.usuarioId)?.nome || 'Desconhecido'
+            });
+          }
+        });
       });
   }
 
   ngOnDestroy() {
-    // Cancelar a inscrição para evitar vazamentos de memória
     if (this.updateSubscription) {
       this.updateSubscription.unsubscribe();
     }
@@ -51,10 +62,12 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
     }).pipe(
       map(({ orders, users }) => {
         this.users = users;
-        return orders.map(order => ({
-          ...order,
-          userName: users.find(user => user.id === order.usuarioId)?.nome || 'Desconhecido'
-        }));
+        return orders
+          .map(order => ({
+            ...order,
+            userName: users.find(user => user.id === order.usuarioId)?.nome || 'Desconhecido'
+          }))
+          .sort((a, b) => new Date(b.dataPedido).getTime() - new Date(a.dataPedido).getTime());
       })
     ).subscribe(ordersWithUserName => {
       this.orders = ordersWithUserName;
@@ -64,19 +77,14 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
   atualizarStatus(orderId: number, novoStatus: string) {
     const pedidoExistente = this.orders.find(order => order.id === orderId);
     if (pedidoExistente) {
-      // Criar uma nova variável pedidoAtualizado
       const pedidoAtualizado: Partial<Order> = {
         ...pedidoExistente,
         status: novoStatus
       };
 
-      // Agora use pedidoAtualizado na chamada do serviço
       this.ordersService.atualizarOrder(pedidoAtualizado as Order).subscribe(() => {
-        // Emitir atualização
         this.orderUpdateService.emitOrderUpdate(orderId, novoStatus);
-        // Atualizar a lista de pedidos no frontend
-      },
-      erro => {
+      }, erro => {
         console.error('Erro ao atualizar o pedido', erro);
       });
     }
