@@ -33,8 +33,13 @@
     <div class="text-end" *ngIf="cart">
       <h3>Total: {{ calcularTotal() | currency }}</h3>
       <!-- Outras partes do template... -->
-      <button class="btn btn-success" (click)="finalizarPedido()">Finalizar Pedido</button>
+      <div>
+        <button class="btn btn-success mb-2" (click)="finalizarPedido()">Finalizar Pedido</button>
+      </div>
+      <!-- Botão para visualização do pedido e histórico em uma nova linha -->
+      <div>
+        <a routerLink="/sumario" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-history"></i> Histórico
+        </a>
+      </div>
     </div>
-  </div>
-  <br><br>
-<app-footer>
