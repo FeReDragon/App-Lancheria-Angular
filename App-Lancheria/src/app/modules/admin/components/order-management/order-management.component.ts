@@ -5,6 +5,7 @@ import { Order } from 'src/app/shared/model/order.model';
 import { User } from 'src/app/shared/model/user.model';
 import { forkJoin, interval, Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { OrderUpdateService } from 'src/app/core/services/order-update.service';
 
 @Component({
   selector: 'app-order-management',
@@ -18,7 +19,8 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
 
   constructor(
     private ordersService: OrdersService,
-    private userService: UserService
+    private userService: UserService,
+    private orderUpdateService: OrderUpdateService
   ) {}
 
   ngOnInit() {
@@ -62,10 +64,16 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
   atualizarStatus(orderId: number, novoStatus: string) {
     const pedidoExistente = this.orders.find(order => order.id === orderId);
     if (pedidoExistente) {
-      const pedidoAtualizado = { ...pedidoExistente, status: novoStatus };
-  
-      this.ordersService.atualizarOrder(pedidoAtualizado).subscribe(() => {
-        // Atualização bem-sucedida
+      // Criar uma nova variável pedidoAtualizado
+      const pedidoAtualizado: Partial<Order> = {
+        ...pedidoExistente,
+        status: novoStatus
+      };
+
+      // Agora use pedidoAtualizado na chamada do serviço
+      this.ordersService.atualizarOrder(pedidoAtualizado as Order).subscribe(() => {
+        // Emitir atualização
+        this.orderUpdateService.emitOrderUpdate(orderId, novoStatus);
         // Atualizar a lista de pedidos no frontend
       },
       erro => {
@@ -73,4 +81,4 @@ export class OrderManagementComponent implements OnInit, OnDestroy {
       });
     }
   }
-}  
+}
