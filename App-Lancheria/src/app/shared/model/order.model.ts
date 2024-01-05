@@ -4,6 +4,7 @@ export interface OrderItem {
     produtoId: number;
     quantidade: number;
     preco: number; // Preço por item
+    nome: string; 
 }
 
 // order.model.ts
