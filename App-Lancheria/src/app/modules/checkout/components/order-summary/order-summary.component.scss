@@ -1,23 +1,16 @@
 .card-custom {
-    font-size: 0.8rem;
-    height: 300px;
-  }
+  font-size: 0.8rem;
+  height: auto; /* Altura ajustada para auto para acomodar o accordion */
+}
 
-  .card-header-custom {
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem; /* Menor padding no cabeçalho */
-  }
+.card-header-custom {
+  font-size: 0.9rem;
+}
 
-  .card-title-custom {
-    font-size: 1rem;
-  }
+.card-title-custom {
+  font-size: 1rem;
+}
 
-  .card-body-custom {
-    overflow-y: auto;
-    height: calc(100% - 56px);
-    padding: 0.5rem; /* Menor padding no corpo do card */
-  }
-
-  .list-group-item {
-    padding: 0.25rem 1rem; /* Menor padding nos itens da lista */
-  }
+.accordion-body {
+  font-size: 0.8rem;
+}
