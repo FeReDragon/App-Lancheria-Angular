@@ -1,5 +1,8 @@
 <app-navbar></app-navbar>
 
+<body>
+  
+
 <div class="container my-4">
   <div class="order-summary">
     <h2 class="mb-3 text-center fs-5">Resumo dos Pedidos</h2>
@@ -12,40 +15,63 @@
           <div class="card-header bg-primary text-white card-header-custom">
             Último Pedido #{{ pedidos[pedidos.length - 1].id }}
           </div>
-          <div class="card-body card-body-custom">
+          <div class="card-body">
             <p><strong>Data:</strong> {{ pedidos[pedidos.length - 1].dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
             <p><strong>Status:</strong> <span class="badge bg-success">{{ pedidos[pedidos.length - 1].status }}</span></p>
             <p><strong>Total:</strong> {{ pedidos[pedidos.length - 1].total | currency:'BRL' }}</p>
-            <p><strong>Itens:</strong></p>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" *ngFor="let item of pedidos[pedidos.length - 1].itens">
-                {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
-              </li>
-            </ul>
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Itens
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" *ngFor="let item of pedidos[pedidos.length - 1].itens">
+                        {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
+
       <!-- Histórico de pedidos anteriores -->
-      <div class="col-md-4 mb-2" *ngFor="let pedido of pedidos.slice(0, -1)">
+      <div class="col-md-4 mb-2" *ngFor="let pedido of pedidos.slice(0, -1); let i = index">
         <div class="card card-custom shadow-sm">
           <div class="card-body card-body-custom">
             <h5 class="card-title card-title-custom">Pedido #{{ pedido.id }}</h5>
             <p><strong>Data:</strong> {{ pedido.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
             <p><strong>Status:</strong> <span class="badge bg-secondary">{{ pedido.status }}</span></p>
             <p><strong>Total:</strong> {{ pedido.total | currency:'BRL' }}</p>
-            <p><strong>Itens:</strong></p>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item" *ngFor="let item of pedido.itens">
-                {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
-              </li>
-            </ul>
+            <div class="accordion" id="accordionPedido{{ i }}">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingPedido{{ i }}">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Itens
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" *ngFor="let item of pedido.itens">
+                        {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <app-footer></app-footer>
 
