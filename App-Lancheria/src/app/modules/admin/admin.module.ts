@@ -9,6 +9,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { InventoryManagementComponent } from './components/inventory-management/inventory-management.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    AccordionModule.forRoot(),
 
   ]
 })

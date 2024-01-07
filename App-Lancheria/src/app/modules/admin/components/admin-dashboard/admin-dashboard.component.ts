@@ -12,6 +12,8 @@ export class AdminDashboardComponent implements OnInit {
   totalProdutos: number = 0;
   totalPedidos: number = 0;
   totalPedidosUltimoDia: number = 0;
+  itemMaisVendido: string = '';
+  frequenciaItens: {[key: string]: number} = {};
 
   constructor(
     private productService: ProductService,
@@ -23,6 +25,7 @@ export class AdminDashboardComponent implements OnInit {
     this.obterTotalProdutos();
     this.obterTotalPedidos();
     this.obterTotalPedidosUltimoDia();
+    this.obterItemMaisVendido();
   }
 
   obterTotalProdutos() {
@@ -35,6 +38,7 @@ export class AdminDashboardComponent implements OnInit {
       }
     );
   }
+
   obterTotalPedidos() {
     this.ordersService.getOrders().subscribe(
       pedidos => {
@@ -62,11 +66,31 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  // Métodos obterTotalPedidos() e obterTotalPedidosUltimoDia() permanecem iguais
-
-  navegarParaGerenciamentoProdutos() {
-    // Substitua pelo caminho correto
-    this.router.navigate(['/adm-itens']);
+  obterItemMaisVendido() {
+    this.ordersService.getOrders().subscribe(
+      pedidos => {
+        pedidos.forEach(pedido => {
+          pedido.itens.forEach(item => {
+            if (this.frequenciaItens[item.nome]) {
+              this.frequenciaItens[item.nome] += item.quantidade;
+            } else {
+              this.frequenciaItens[item.nome] = item.quantidade;
+            }
+          });
+        });
+        this.itemMaisVendido = this.encontrarItemMaisVendido();
+      },
+      erro => {
+        console.error('Erro ao obter pedidos', erro);
+      }
+    );
   }
 
+  encontrarItemMaisVendido(): string {
+    return Object.keys(this.frequenciaItens).reduce((a, b) => this.frequenciaItens[a] > this.frequenciaItens[b] ? a : b);
+  }
+
+  navegarParaGerenciamentoProdutos() {
+    this.router.navigate(['/adm-itens']);
+  }
 }

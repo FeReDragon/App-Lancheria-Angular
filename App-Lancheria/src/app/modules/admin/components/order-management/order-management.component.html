@@ -1,34 +1,56 @@
 <!-- order-management.component.html -->
 <div class="order-management">
-  <h2>Gerenciamento de Pedidos</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Usuário</th>
-        <th>Data </th>
-        <th>Status</th>
-        <th>Total</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
-        <td>{{ order.userName }}</td>
-        <div>{{ order.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
-        <td>
-          <select [(ngModel)]="order.status" (change)="atualizarStatus(order.id, order.status)">
-            <option value="pendente">Pendente</option>
-            <option value="em preparacao">Em Preparação</option>
-            <option value="entregue">Entregue</option>
-          </select>
-        </td>
-        <td>{{ order.total | currency }}</td>
-        <td>
-          <!-- Botões para ações como visualizar, editar, cancelar pedidos -->
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuário</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let order of orders; let i = index">
+          <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.userName }}</td>
+            <td>{{ order.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            <td>
+              <select [(ngModel)]="order.status" class="form-select" (change)="atualizarStatus(order.id, order.status)">
+                <option value="pendente">Pendente</option>
+                <option value="em preparacao">Em Preparação</option>
+                <option value="entregue">Entregue</option>
+              </select>
+            </td>
+            <td>{{ order.total | currency }}</td>
+            <td>
+              <!-- Botão para acionar o acordeão -->
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" aria-controls="'collapse' + i">
+                Detalhes
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6">
+              <div [id]="'collapse' + i" class="collapse" aria-labelledby="headingOne">
+                <div class="card card-body">
+                  <!-- Informações detalhadas do pedido -->
+                  <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.cidade }}, {{ order.cep }}</div>
+                  <div><strong>Método de Pagamento:</strong> {{ order.metodoPagamento }}</div>
+                  <ul>
+                    <li *ngFor="let item of order.itens">
+                      {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
 </div>
