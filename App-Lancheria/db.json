@@ -769,7 +769,7 @@
         }
       ],
       "dataPedido": "2024-01-05T16:37:27.922Z",
-      "status": "em preparacao",
+      "status": "entregue",
       "total": 21.490000000000002,
       "endereco": "rua juvenal",
       "bairro": "",
@@ -826,14 +826,66 @@
         }
       ],
       "dataPedido": "2024-01-05T17:18:38.438Z",
-      "status": "pendente",
+      "status": "entregue",
       "total": 60.470000000000006,
       "endereco": "",
       "bairro": "",
       "cidade": "",
       "cep": "",
       "metodoPagamento": "cartao",
-      "id": 16
+      "id": 16,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 2,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-06T22:55:38.336Z",
+      "status": "entregue",
+      "total": 29,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 17,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 7.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 27,
+          "nome": "Água Mineral",
+          "preco": 2,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-agua.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-07T19:35:27.823Z",
+      "status": "em preparacao",
+      "total": 9.99,
+      "endereco": "servidao ipe branco",
+      "bairro": "",
+      "cidade": "",
+      "cep": "88060328",
+      "metodoPagamento": "boleto",
+      "id": 18,
+      "userName": "fernando aurelio"
     }
   ]
 }
