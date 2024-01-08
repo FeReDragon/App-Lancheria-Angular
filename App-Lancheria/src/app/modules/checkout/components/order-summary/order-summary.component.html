@@ -1,8 +1,5 @@
 <app-navbar></app-navbar>
 
-<body>
-  
-
 <div class="container my-4">
   <div class="order-summary">
     <h2 class="mb-3 text-center fs-5">Resumo dos Pedidos</h2>
@@ -19,14 +16,14 @@
             <p><strong>Data:</strong> {{ pedidos[pedidos.length - 1].dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
             <p><strong>Status:</strong> <span class="badge bg-success">{{ pedidos[pedidos.length - 1].status }}</span></p>
             <p><strong>Total:</strong> {{ pedidos[pedidos.length - 1].total | currency:'BRL' }}</p>
-            <div class="accordion" id="accordionExample">
+            <div class="accordion" id="accordionUltimoPedido">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" id="headingUltimoPedido">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUltimoPedido" aria-expanded="true" aria-controls="collapseUltimoPedido">
                     Itens
                   </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div id="collapseUltimoPedido" class="accordion-collapse collapse show" aria-labelledby="headingUltimoPedido" data-bs-parent="#accordionUltimoPedido">
                   <div class="accordion-body">
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item" *ngFor="let item of pedidos[pedidos.length - 1].itens">
@@ -41,7 +38,6 @@
         </div>
       </div>
 
-
       <!-- Histórico de pedidos anteriores -->
       <div class="col-md-4 mb-2" *ngFor="let pedido of pedidos.slice(0, -1); let i = index">
         <div class="card card-custom shadow-sm">
@@ -50,14 +46,14 @@
             <p><strong>Data:</strong> {{ pedido.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
             <p><strong>Status:</strong> <span class="badge bg-secondary">{{ pedido.status }}</span></p>
             <p><strong>Total:</strong> {{ pedido.total | currency:'BRL' }}</p>
-            <div class="accordion" id="accordionPedido{{ i }}">
+            <div class="accordion" [id]="'accordionPedido' + pedido.id">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="headingPedido{{ i }}">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="accordion-header" [id]="'headingPedido' + pedido.id">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapsePedido' + pedido.id" aria-expanded="false" aria-controls="'collapsePedido' + pedido.id">
                     Itens
                   </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div [id]="'collapsePedido' + pedido.id" class="accordion-collapse collapse" aria-labelledby="'headingPedido' + pedido.id" [attr.data-bs-parent]="'#accordionPedido' + pedido.id">
                   <div class="accordion-body">
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item" *ngFor="let item of pedido.itens">
@@ -72,6 +68,8 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 <app-footer></app-footer>
 
