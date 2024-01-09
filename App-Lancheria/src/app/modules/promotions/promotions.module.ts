@@ -6,6 +6,8 @@ import { PromotionDashboardComponent } from './components/promotion-dashboard/pr
 import { PromotionCreateComponent } from './components/promotion-create/promotion-create.component';
 import { PromotionEditComponent } from './components/promotion-edit/promotion-edit.component';
 import { PromotionListComponent } from './components/promotion-list/promotion-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { PromotionListComponent } from './components/promotion-list/promotion-li
   ],
   imports: [
     CommonModule,
-    PromotionsRoutingModule
+    PromotionsRoutingModule,
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class PromotionsModule { }
