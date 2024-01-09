@@ -1,56 +1,50 @@
-<!-- order-management.component.html -->
-<div class="order-management">
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Usuário</th>
-          <th>Data</th>
-          <th>Status</th>
-          <th>Total</th>
-          <th>Detalhes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let order of orders; let i = index">
-          <tr>
-            <td>{{ order.id }}</td>
-            <td>{{ order.userName }}</td>
-            <td>{{ order.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
-            <td>
+<app-navbar></app-navbar>
+
+<div class="container my-4">
+  <div class="order-summary">
+    <div *ngIf="orders.length === 0" class="alert alert-info">Nenhum pedido encontrado.</div>
+
+    <div class="row">
+      <div class="col-md-3 mb-2" *ngFor="let order of orders; let i = index">
+        <div class="card card-custom shadow-sm" [style.background-color]="order.status === 'pendente' ? 'rgba(255, 0, 0, 0.5)' : ''">
+
+          <div class="card-body card-body-custom">
+            <h5 class="card-title card-title-custom">Pedido #{{ order.id }}</h5>
+            <p><strong>Data:</strong> {{ order.dataPedido | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+            <p><strong>Nome:</strong> {{ order.userName }}</p>
+            <p><strong>Status:</strong>
               <select [(ngModel)]="order.status" class="form-select" (change)="atualizarStatus(order.id, order.status)">
                 <option value="pendente">Pendente</option>
                 <option value="em preparacao">Em Preparação</option>
                 <option value="entregue">Entregue</option>
               </select>
-            </td>
-            <td>{{ order.total | currency }}</td>
-            <td>
-              <!-- Botão para acionar o acordeão -->
-              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="false" aria-controls="'collapse' + i">
-                Detalhes
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="6">
-              <div [id]="'collapse' + i" class="collapse" aria-labelledby="headingOne">
-                <div class="card card-body">
-                  <!-- Informações detalhadas do pedido -->
-                  <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.cidade }}, {{ order.cep }}</div>
-                  <div><strong>Método de Pagamento:</strong> {{ order.metodoPagamento }}</div>
-                  <ul>
-                    <li *ngFor="let item of order.itens">
-                      {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
-                    </li>
-                  </ul>
+            </p>
+            <p><strong>Total:</strong> {{ order.total | currency:'BRL' }}</p>
+            <div class="accordion" [id]="'accordionPedido' + order.id">
+              <div class="accordion-item">
+                <h2 class="accordion-header" [id]="'headingPedido' + order.id">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapsePedido' + order.id" aria-expanded="false" aria-controls="'collapsePedido' + order.id">
+                    Detalhes
+                  </button>
+                </h2>
+                <div [id]="'collapsePedido' + order.id" class="accordion-collapse collapse" aria-labelledby="'headingPedido' + order.id" [attr.data-bs-parent]="'#accordionPedido' + order.id">
+                  <div class="accordion-body">
+                    <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.cidade }}, {{ order.cep }}</div>
+                    <div><strong>Método de Pagamento:</strong> {{ order.metodoPagamento }}</div>
+                    <ul>
+                      <li *ngFor="let item of order.itens">
+                        {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<app-footer></app-footer>
