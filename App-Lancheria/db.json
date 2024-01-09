@@ -275,14 +275,6 @@
       "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
     },
     {
-      "id": 31,
-      "nome": "x-moda casa",
-      "descricao": "asdasd",
-      "preco": 17,
-      "categoria": "Lanches",
-      "imagemUrl": ""
-    },
-    {
       "id": 32,
       "nome": "x-gaucho",
       "descricao": "dsdsd",
@@ -292,7 +284,7 @@
     },
     {
       "id": 33,
-      "nome": "x-salada do pai ",
+      "nome": "x-salada do papai",
       "descricao": "pao hamburger salada do pai ",
       "preco": 20,
       "categoria": "Lanches",
@@ -877,7 +869,7 @@
         }
       ],
       "dataPedido": "2024-01-07T19:35:27.823Z",
-      "status": "em preparacao",
+      "status": "entregue",
       "total": 9.99,
       "endereco": "servidao ipe branco",
       "bairro": "",
@@ -886,6 +878,180 @@
       "metodoPagamento": "boleto",
       "id": 18,
       "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 19,
+          "nome": "Cheesecake de Morango",
+          "preco": 7.5,
+          "quantidade": 1,
+          "imagemUrl": "url-cheesecake.jpg"
+        },
+        {
+          "produtoId": 27,
+          "nome": "Água Mineral",
+          "preco": 2,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-agua.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-08T14:47:43.478Z",
+      "status": "entregue",
+      "total": 24,
+      "endereco": "servidoa ipe branco",
+      "bairro": "",
+      "cidade": "",
+      "cep": "88060328",
+      "metodoPagamento": "boleto",
+      "id": 19,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 7.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 7,
+          "nome": "Anéis de Cebola",
+          "preco": 6.5,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/originals/a4/80/52/a48052a6fdaea4b4d1510ebf3f744abd.png"
+        },
+        {
+          "produtoId": 8,
+          "nome": "Frango à Passarinho",
+          "preco": 8.99,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/736x/be/0d/45/be0d454e0fec09acec6dbb91e1eaabbd.jpg"
+        },
+        {
+          "produtoId": 30,
+          "nome": "Cerveja Artesanal",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-cerveja-artesanal.jpg"
+        },
+        {
+          "produtoId": 27,
+          "nome": "Água Mineral",
+          "preco": 2,
+          "quantidade": 1,
+          "imagemUrl": "url-da-imagem-agua.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-08T15:07:17.951Z",
+      "status": "entregue",
+      "total": 45.980000000000004,
+      "endereco": "servidoa ipe branco",
+      "bairro": "",
+      "cidade": "floripa",
+      "cep": "88060328",
+      "metodoPagamento": "boleto",
+      "id": 20,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 14.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 18,
+          "nome": "Mousse de Chocolate",
+          "preco": 6,
+          "quantidade": 1,
+          "imagemUrl": "url-moussechocolate.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-09T15:17:30.387Z",
+      "status": "entregue",
+      "total": 20.5,
+      "endereco": "servidao ipe branco",
+      "bairro": "",
+      "cidade": "88060328",
+      "cep": "",
+      "metodoPagamento": "cartao",
+      "id": 21,
+      "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 12,
+          "nome": "Pizza de Calabresa",
+          "preco": 24,
+          "quantidade": 1,
+          "imagemUrl": "https://vovozitareceitas.com/wp-content/uploads/2020/09/pizza-calabresa.jpg"
+        },
+        {
+          "produtoId": 13,
+          "nome": "Pizza Quatro Queijos",
+          "preco": 25.5,
+          "quantidade": 1,
+          "imagemUrl": "https://www.anamariabrogui.com.br/assets/uploads/receitas/fotos/usuario-1932-5a1b7911dfda6e3c351c30de564da267.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-09T17:40:39.697Z",
+      "status": "em preparacao",
+      "total": 49.5,
+      "endereco": "",
+      "bairro": "",
+      "cidade": "",
+      "cep": "",
+      "metodoPagamento": "boleto",
+      "id": 22,
+      "userName": "fernando aurelio"
+    }
+  ],
+  "promocoes": [
+    {
+      "titulo": "torra",
+      "desconto": 5,
+      "dataInicio": "2024-01-10",
+      "dataFim": "2024-01-12",
+      "id": 1
+    },
+    {
+      "titulo": "torra tudo",
+      "desconto": 10,
+      "dataInicio": "2024-01-09",
+      "dataFim": "2024-01-09",
+      "produtosAplicaveis": [
+        19,
+        21,
+        27,
+        30,
+        32
+      ],
+      "id": 2
     }
   ]
 }
