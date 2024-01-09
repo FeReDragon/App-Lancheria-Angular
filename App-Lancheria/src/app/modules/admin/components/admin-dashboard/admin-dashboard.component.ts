@@ -93,4 +93,8 @@ export class AdminDashboardComponent implements OnInit {
   navegarParaGerenciamentoProdutos() {
     this.router.navigate(['/adm-itens']);
   }
+
+  navegarParaGerenciamentoPedidios() {
+    this.router.navigate(['/gerenciamento-pedidos']);
+  }
 }

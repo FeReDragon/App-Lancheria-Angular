@@ -1,103 +1,87 @@
 <app-navbar></app-navbar>
 
 <div class="custom-margin-container">
-  <div class="container-fluid mt-4">
-
-<div class="container-fluid mt-4">
-  <div class="row">
-    <!-- Seção de Métricas -->
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <i class="fa fa-utensils fa-3x text-primary" aria-hidden="true"></i>
-          <h5 class="card-title mt-3">Prato mais vendido</h5>
-          <p>{{ itemMaisVendido }}</p>
+  <div class="container-fluid my-5">
+    <div class="row">
+      <!-- Seção de Métricas -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fa fa-utensils fa-3x text-primary" aria-hidden="true"></i>
+            <h5 class="card-title mt-3">Prato mais Pedido</h5>
+            <p>{{ itemMaisVendido }}</p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <i class="fa fa-chart-line fa-3x text-success" aria-hidden="true"></i>
-          <h5 class="card-title mt-3">Vendas (24h)</h5>
-          <strong>{{ totalPedidosUltimoDia }}</strong>
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fa fa-chart-line fa-3x text-success" aria-hidden="true"></i>
+            <h5 class="card-title mt-3">Pedidios (24h)</h5>
+            <strong>{{ totalPedidosUltimoDia }}</strong>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <i class="fa fa-list-alt fa-3x text-info" aria-hidden="true"></i>
-          <h5 class="card-title mt-3">Total de Pedidos:</h5>
-          <strong>{{ totalPedidos }}</strong>
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fa fa-list-alt fa-3x text-info" aria-hidden="true"></i>
+            <h5 class="card-title mt-3">Total de Pedidos:</h5>
+            <strong>{{ totalPedidos }}</strong>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <i class="fa fa-cogs fa-3x text-info" aria-hidden="true"></i>
+            <h5 class="card-title mt-3">Relatórios</h5>
+          </div>
         </div>
       </div>
     </div>
     
-    
-    <div class="col-md-3 mb-4">
-      <div class="card h-100 text-center">
-        <div class="card-body">
-          <i class="fa fa-cogs fa-3x text-info" aria-hidden="true"></i>
-          <h5 class="card-title mt-3">Outra métrica</h5>
+    <div class="row">
+      <!-- Gerenciamento de Produtos -->
+      <div class="col-md-6 mb-4">
+        <div class="card border-primary h-100">
+          <div class="card-header bg-primary text-white">Produtos Cadastrados</div>
+          <div class="card-body background-produtos">
+            <h5 class="text-white">Total: {{ totalProdutos }}</h5>
+            <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Gerenciar Produtos</button>
+          </div>
         </div>
       </div>
-    </div>
+
+      <!-- Gerenciamento de Pedidos -->
+      <div class="col-md-6 mb-4">
+        <div class="card border-success h-100">
+          <div class="card-header bg-success text-white">Gerenciamento de Pedidios</div>
+          <div class="card-body background-pedidos">
+            <button class="btn btn-success mt-3" (click)="navegarParaGerenciamentoPedidios()">Gerenciar Pedidos</button>
+          </div>
+        </div>
+      </div>
   </div>
 
 
-
   <div class="row">
-    <!-- Dashboard Header -->
-    <div class="col-12 mb-4">
-      <div class="card shadow-sm">
-          <div class="card-header bg-success text-white">Gerenciamento de Pedidos</div>
-          <div class="order-management-body">
-           
-            <app-order-management></app-order-management>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  
-  <div class="row">
-    <!-- Gerenciamento de Produtos -->
-    <div class="col-md-6 mb-4">
-      <div class="card border-primary h-100">
-        <div class="card-header bg-primary text-white">Produtos Cadastrados</div>
-        <div class="card-body">
-          <h5>Total: {{ totalProdutos }}</h5>
-          <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Gerenciar Produtos</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gerenciamento de Pedidos -->
-    <div class="col-md-6 mb-4">
-      <div class="card border-success h-100">
-        <div class="card-header bg-success text-white">Gerenciamento de Promoçoes</div>
-        <div class="order-management-body">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <!-- Gerenciamento de Categorias -->
+    <!-- Gerenciamento de Promoções -->
     <div class="col-12">
       <div class="card shadow-lg">
-        <div class="card-header bg-dark text-white">Gerenciamento de Categorias</div>
+        <div class="card-header bg-dark text-white">Gerenciamento de Promoções</div>
         <div class="card-body">
-          <p>Ferramentas para categorias</p>
+          <p>Ferramentas para Promoções</p>
+          <!-- Botão para a rota de promoções -->
+          <a class="btn btn-dark mt-3" routerLink="/promo">Gerenciar Promoções</a>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
 </div>
 <app-footer></app-footer>
 
