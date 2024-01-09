@@ -9,6 +9,8 @@ import { OrderCreateComponent } from './modules/checkout/components/order-create
 import { OrderSummaryComponent } from './modules/checkout/components/order-summary/order-summary.component';
 import { ManageProductsComponent } from './modules/admin/components/manage-products/manage-products.component';
 import { AdminDashboardComponent } from './modules/admin/components/admin-dashboard/admin-dashboard.component';
+import { OrderManagementComponent } from './modules/admin/components/order-management/order-management.component';
+import { PromotionDashboardComponent } from './modules/promotions/components/promotion-dashboard/promotion-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Rota raiz redireciona para /home
@@ -20,7 +22,9 @@ const routes: Routes = [
   { path: 'pedido', component: OrderCreateComponent },
   { path: 'sumario', component: OrderSummaryComponent },
   { path: 'adm-itens', component: ManageProductsComponent },
-  { path: 'dashboard', component: AdminDashboardComponent },
+  { path: 'dashboard', component: AdminDashboardComponent }, 
+  { path: 'gerenciamento-pedidos', component: OrderManagementComponent },
+  { path: 'promo', component: PromotionDashboardComponent },
   // Outras rotas podem ser adicionadas aqui
 ];
 
