@@ -2,7 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from '../../../../shared/model/product.model';
 import { ProductService } from '../../../../core/services/product.service';
-import { ViewChild } from '@angular/core';
+
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-manage-products',
@@ -11,7 +12,7 @@ import { ViewChild } from '@angular/core';
 })
 export class ManageProductsComponent implements OnInit {
   produtos: Produto[] = [];
-  produtoEditando: Produto | null = null;
+  produtoEditando: Produto = this.criarProdutoVazio();
   categorias: any[] = [
     { id: 1, nome: "Lanches", descricao: "Deliciosos lanches para todos os gostos" },
     { id: 2, nome: "Porções", descricao: "Porções generosas e saborosas" },
@@ -20,11 +21,16 @@ export class ManageProductsComponent implements OnInit {
     { id: 5, nome: "Saladas", descricao: "Saladas frescas e nutritivas" },
     { id: 6, nome: "Bebidas", descricao: "Bebidas refrescantes e variadas" }
   ];
+  
+  modalInstance: any;
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.carregarProdutos();
+    this.modalInstance = new bootstrap.Modal(document.getElementById('editProductModal'), {
+      keyboard: false
+    });
   }
 
   carregarProdutos() {
@@ -34,41 +40,47 @@ export class ManageProductsComponent implements OnInit {
   }
 
   iniciarEdicao(produto: Produto) {
-    this.produtoEditando = {...produto}; // Cria uma cópia do produto para edição
+    this.produtoEditando = { ...produto };
+    this.abrirModal();
   }
 
-salvarProduto() {
-    if (this.produtoEditando) {
-      if (this.produtoEditando.id) {
-        // Atualizar produto existente
-        this.productService.atualizarProduto(this.produtoEditando).subscribe(() => {
-          this.carregarProdutos();
-          this.produtoEditando = null;
-        });
-      } else {
-        // Adicionar novo produto
-        this.productService.adicionarProduto(this.produtoEditando).subscribe(() => {
-          this.carregarProdutos();
-          this.produtoEditando = null;
-        });
-      }
+  abrirModal() {
+    this.modalInstance.show();
+  }
+
+  fecharModal() {
+    this.modalInstance.hide();
+  }
+
+  confirmarExclusao(produtoId: number) {
+    if (confirm('Tem certeza que deseja excluir este produto?')) {
+      this.excluirProduto(produtoId);
     }
-  }
-
-  criarProdutoVazio(): Produto {
-    return {
-      id: 0, // Defina como null ou 0, dependendo de como seu backend lida com novos IDs
-      nome: '',
-      descricao: '',
-      preco: 0,
-      categoria: '',
-      imagemUrl: ''
-    };
   }
 
   excluirProduto(produtoId: number) {
     this.productService.excluirProduto(produtoId).subscribe(() => {
       this.carregarProdutos();
     });
+  }
+
+  salvarProduto() {
+    if (this.produtoEditando && this.produtoEditando.id) {
+      this.productService.atualizarProduto(this.produtoEditando).subscribe(() => {
+        this.carregarProdutos();
+        this.fecharModal();
+        this.produtoEditando = this.criarProdutoVazio();
+      });
+    } else if (this.produtoEditando) {
+      this.productService.adicionarProduto(this.produtoEditando).subscribe(() => {
+        this.carregarProdutos();
+        this.fecharModal();
+        this.produtoEditando = this.criarProdutoVazio();
+      });
+    }
+  }
+
+  criarProdutoVazio(): Produto {
+    return { id: 0, nome: '', descricao: '', preco: 0, categoria: '', imagemUrl: '' };
   }
 }

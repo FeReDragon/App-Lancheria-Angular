@@ -2,55 +2,59 @@
 
 <div class="container manage-products">
     <h2 class="my-4 text-center">Gerenciamento de Produtos</h2>
-    <button class="btn btn-success mt-3 mb-3" (click)="produtoEditando = criarProdutoVazio()">Adicionar Novo Produto</button>
+    <div class="text-start">
+        <button class="btn btn-success my-3" data-bs-toggle="modal" data-bs-target="#editProductModal">Adicionar Novo Produto</button>
+    </div>
+    
 
-    <div class="row mb-3" *ngIf="produtoEditando">
-        <div class="col-md-6 offset-md-3">
-            <div class="form-group">
-                <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.nome" placeholder="Nome">
-                <textarea class="form-control mb-2" [(ngModel)]="produtoEditando.descricao" placeholder="Descrição"></textarea>
-                <input type="number" class="form-control mb-2" [(ngModel)]="produtoEditando.preco" placeholder="Preço">
-                
-                <!-- Seletor de Categoria -->
-                <select class="form-control mb-2" [(ngModel)]="produtoEditando.categoria">
-                    <option *ngFor="let categoria of categorias" [value]="categoria.nome">{{ categoria.nome }}</option>
-                </select>
+    <!-- Janela Modal para Criação e Edição de Produtos -->
+    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" *ngIf="produtoEditando">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel">{{ produtoEditando.id ? 'Editar Produto' : 'Adicionar Produto' }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.nome" name="nome" placeholder="Nome">
+                        <textarea class="form-control mb-2" [(ngModel)]="produtoEditando.descricao" name="descricao" placeholder="Descrição"></textarea>
+                        <input type="number" class="form-control mb-2" [(ngModel)]="produtoEditando.preco" name="preco" placeholder="Preço">
+                        <select class="form-control mb-2" [(ngModel)]="produtoEditando.categoria" name="categoria">
+                            <option *ngFor="let categoria of categorias" [ngValue]="categoria.nome">{{ categoria.nome }}</option>
+                        </select>
+                        <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.imagemUrl" name="imagemUrl" placeholder="URL da Imagem">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="fecharModal()">Fechar</button>
+                    <button type="button" class="btn btn-primary" (click)="salvarProduto()">Salvar</button>
 
-                <input type="text" class="form-control mb-2" [(ngModel)]="produtoEditando.imagemUrl" placeholder="URL da Imagem">
-                <button class="btn btn-primary" (click)="salvarProduto()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini Cards para Exibição de Produtos -->
+    <div class="row">
+        <div class="col-md-2 mb-4" *ngFor="let produto of produtos">
+            <div class="card h-100 mini-card">
+                <img [src]="produto.imagemUrl" class="card-img-top" alt="Imagem do Produto" style="object-fit: cover; height: 100px; width: 100%; display: block;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ produto.nome }}</h5>
+                    <p class="card-text">{{ produto.descricao | slice:0:15 }}{{ produto.descricao.length > 15 ? '...' : '' }}</p>
+                    <p class="card-text"><small class="text-muted">Preço: {{ produto.preco | currency }}</small></p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-secondary btn-sm" (click)="iniciarEdicao(produto); abrirModal()">Editar</button>
+                    <button class="btn btn-danger btn-sm" (click)="confirmarExclusao(produto.id)">Excluir</button>
+                  </div>
+                  
             </div>
         </div>
     </div>
     
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th>Imagem</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let produto of produtos">
-                <td>{{ produto.nome }}</td>
-                <td>{{ produto.descricao }}</td>
-                <td>{{ produto.preco | currency }}</td>
-                <td>{{ produto.categoria }}</td>
-                <td>
-                    <img [src]="produto.imagemUrl" alt="Imagem do Produto" style="height: 50px; object-fit: cover;">
-                </td>
-                <td>
-                    <button class="btn btn-secondary btn-sm" (click)="iniciarEdicao(produto)">Editar</button>
-                    <button class="btn btn-danger btn-sm" (click)="excluirProduto(produto.id)">Excluir</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 
-
-<app-footer>
+<app-footer></app-footer>
 
