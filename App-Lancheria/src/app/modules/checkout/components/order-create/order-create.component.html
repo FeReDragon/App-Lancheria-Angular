@@ -1,0 +1,37 @@
+<app-navbar></app-navbar> 
+
+    <div class="container my-5">
+        <div class="order-form">
+        <h2>Resumo do Pedido</h2>
+
+        <!-- Resumo do Carrinho -->
+        <div *ngIf="cart && cart.itens.length > 0">
+            <h3>Itens no Carrinho:</h3>
+            <ul>
+            <li *ngFor="let item of cart.itens">
+                {{ item.nome }} - {{ item.quantidade }} x {{ item.preco | currency }}
+            </li>
+            </ul>
+        </div>
+
+        <!-- Formulário de Endereço -->
+        <h3>Informações de Entrega</h3>
+        <input type="text" [(ngModel)]="endereco" placeholder="Endereço/Rua" />
+        <input type="text" [(ngModel)]="bairro" placeholder="bairro" />
+        <input type="text" [(ngModel)]="cidade" placeholder="Cidade" />
+        <input type="text" [(ngModel)]="cep" placeholder="CEP" />
+
+
+        <!-- Método de Pagamento -->
+        <h3>Método de Pagamento</h3>
+        <select [(ngModel)]="metodoPagamento">
+            <option value="cartao">Cartão de Crédito</option>
+            <option value="cartao">Cartão de Débito</option>
+            <option value="boleto">Dinheiro</option>
+        </select>
+
+        <button (click)="enviarPedido()">Enviar Pedido</button>
+        </div>
+    </div>
+  
+  <app-footer></app-footer>

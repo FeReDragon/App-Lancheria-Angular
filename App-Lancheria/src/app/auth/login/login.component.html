@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Login
+                </div>
+                <div class="card-body">
+                    <form (ngSubmit)="onLogin()">
+                        <div class="form-group mb-3">
+                            <label for="inputEmail">Endereço de E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" placeholder="Digite seu e-mail">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="inputPassword">Senha</label>
+                            <input type="password" class="form-control" id="inputPassword" [(ngModel)]="senha" name="senha" placeholder="Digite sua senha">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <a href="/register">Ainda não tem uma conta? Registre-se</a>
+                    <br>
+                    <a href="/forgot-password">Esqueceu sua senha?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer>

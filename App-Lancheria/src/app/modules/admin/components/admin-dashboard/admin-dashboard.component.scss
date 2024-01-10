@@ -1,0 +1,22 @@
+.order-management-body {
+    max-height: 350px; /* Ajuste este valor conforme necessário */
+    overflow: auto;
+  }
+  .custom-margin-container {
+    margin-left: 5%; /* Margem esquerda */
+    margin-right: 5%; /* Margem direita */
+  }
+  
+
+  .background-produtos {
+    background-image: url('/assets/img/wpp-lanche2.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .background-pedidos {
+    background-image: url('/assets/img/entrega.png');
+    background-size: cover;
+    background-position: center; 
+  }
+  

@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<br><br>
+<!-- cart-view.component.html -->
+<div class="container my-4">
+    <h2>Carrinho de Compras</h2>
+    <table class="table" *ngIf="cart && cart.itens">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+          <th>Subtotal</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="cart.itens.length > 0">
+        <tr *ngFor="let item of cart.itens">
+          <td>{{ item.nome }}</td>
+          <td>{{ item.preco | currency }}</td>
+          <td>{{ item.quantidade }}</td>
+          <td>{{ item.preco * item.quantidade | currency }}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" (click)="removerItem(item)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="cart.itens.length === 0">
+        <tr>
+          <td colspan="5">Carrinho vazio.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-end" *ngIf="cart">
+      <h3>Total: {{ calcularTotal() | currency }}</h3>
+      <!-- Outras partes do template... -->
+      <div>
+        <button class="btn btn-success mb-2" (click)="finalizarPedido()">Finalizar Pedido</button>
+      </div>
+      <!-- Botão para visualização do pedido e histórico em uma nova linha -->
+      <div>
+        <a routerLink="/sumario" class="btn btn-outline-secondary btn-sm">
+          <i class="fa fa-history"></i> Histórico
+        </a>
+      </div>
+    </div>
