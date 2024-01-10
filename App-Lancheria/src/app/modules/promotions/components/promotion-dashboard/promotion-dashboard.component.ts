@@ -40,8 +40,6 @@ export class PromotionDashboardComponent implements OnInit {
     }
   }
   
-  
-
   carregarPromocoes() {
     this.promotionService.getPromocoes().subscribe((data: Promotion[]) => {
       this.promocoes = data;
