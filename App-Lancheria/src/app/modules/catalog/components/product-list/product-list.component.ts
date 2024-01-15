@@ -86,8 +86,21 @@ export class ProductListComponent implements OnInit {
 
   onCategoriaSelecionada(categoriaNome: string) {
     this.selectedCategoriaNome = categoriaNome;
-    this.loadProdutos();
+    this.filterProdutosPorCategoria();
   }
+  filterProdutosPorCategoria() {
+    if (this.selectedCategoriaNome) {
+      this.productService.getProdutos().subscribe(
+        data => {
+          this.produtos = data.filter(produto => produto.categoria === this.selectedCategoriaNome);
+        },
+        error => console.error(error)
+      );
+    } else {
+      this.loadProdutos(); // Carrega todos os produtos se nenhuma categoria for selecionada
+    }
+  }
+    
 
   adicionarAoCarrinho(produto: Produto) {
     const usuarioAtual = this.authService.currentUserValue;
