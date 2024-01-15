@@ -10,6 +10,7 @@ import { InventoryManagementComponent } from './components/inventory-management/
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { ManageDishOfTheDayComponent } from './components/manage-dish-of-the-day/manage-dish-of-the-day.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     OrderManagementComponent,
     AnalyticsComponent,
     InventoryManagementComponent,
+    ManageDishOfTheDayComponent,
   ],
   imports: [
     CommonModule,

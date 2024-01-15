@@ -51,7 +51,7 @@
           <div class="card-header bg-primary text-white">Produtos Cadastrados</div>
           <div class="card-body background-produtos">
             <h5 class="text-white">Total: {{ totalProdutos }}</h5>
-            <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Gerenciar Produtos</button>
+            <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Produtos</button>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <!-- Gerenciamento de Pedidos -->
       <div class="col-md-6 mb-4">
         <div class="card border-success h-100">
-          <div class="card-header bg-success text-white">Gerenciamento de Pedidios</div>
+          <div class="card-header bg-success text-white">Pedidios</div>
           <div class="card-body background-pedidos">
             <button class="btn btn-success mt-3" (click)="navegarParaGerenciamentoPedidios()">Gerenciar Pedidos</button>
           </div>
@@ -70,16 +70,28 @@
 
   <div class="row">
     <!-- Gerenciamento de Promoções -->
-    <div class="col-12">
+    <div class="col-md-6 mb-4">
       <div class="card shadow-lg">
         <div class="card-header bg-dark text-white">Gerenciamento de Promoções</div>
         <div class="card-body">
           <p>Ferramentas para Promoções</p>
           <!-- Botão para a rota de promoções -->
-          <a class="btn btn-dark mt-3" routerLink="/promo">Gerenciar Promoções</a>
+          <a class="btn btn-dark mt-3" routerLink="/promo">Promoções</a>
         </div>
       </div>
     </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white">Gerenciamento Prato do dia</div>
+        <div class="card-body">
+          <p>Ferramentas para gerenciar Prato do Dia!</p>
+          <!-- Botão para a rota de promoções -->
+          <a class="btn btn-dark mt-3" routerLink="/prato-do-dia">Prato do dia</a>
+        </div>
+      </div>
+    </div>
+
   </div>
   </div>
 </div>
