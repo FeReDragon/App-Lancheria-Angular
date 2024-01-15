@@ -1,27 +1,29 @@
 <div class="container mt-4">
-    <h2 class="text-center mb-3">Prato do Dia</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let produto of produtos">
-        <div class="card h-100 border-0 bg-light bg-opacity-40 ">
-          <img [src]="produto.imagemUrl" class="card-img-top" alt="Imagem do prato" *ngIf="produto.imagemUrl">
-          <div class="card-body">
-            <h5 class="card-title">{{ produto.nome }}</h5>
-            <p class="card-text">{{ produto.descricao }}</p>
+  <h2 class="text-center mb-3">Prato do Dia</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let produto of produtos">
+      <div class="card h-100 border-0 bg-light bg-opacity-40 card-custom">
 
-            <!-- Exibir o preço se disponível -->
-            <p class="card-text" *ngIf="produto.preco">
-              <strong>Preço: </strong>R$ {{ produto.preco.toFixed(2) }}
-            </p>
-            <!-- Exibir mensagem se o preço não estiver disponível -->
-            <p class="card-text" *ngIf="!produto.preco">
-              Preço não disponível
-            </p>
-
-            <a href="#" class="btn btn-primary">Pedir Agora</a>
+      <img [src]="produto.imagemUrl" class="card-img-top" alt="Imagem do prato" *ngIf="produto.imagemUrl">
+        <div class="card-body position-relative">
+          <h5 class="card-title">{{ produto.nome }}</h5>
+          <p class="card-text">{{ produto.descricao.length > 35 ? (produto.descricao | slice:0:35) + '...' : produto.descricao }}</p>
+          <p class="card-text" *ngIf="produto.preco">
+          <p><strong>Preço: </strong>R$ {{ produto.preco.toFixed(2) }}
+          </p>
+          <p class="card-text" *ngIf="!produto.preco">
+          Preço não disponível
+          </p>
+          <hr class="my-5">
+            <div class="button-group position-absolute bottom-0 start-0 end-0 pb-2 px-3 d-flex justify-content-between">
+            <button class="btn btn-primary btn-sm" (click)="adicionarAoCarrinho(produto)">Add ao Pedido</button>
+            <a class="btn btn-success btn-sm text-white" routerLink="/menu">Ver Menu</a>
+            <a class="btn btn-secondary btn-sm" [routerLink]="['/carrinho']">
+            <i class="fas fa-shopping-cart"></i> Carrinho
+            </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
-
-  
+</div>
