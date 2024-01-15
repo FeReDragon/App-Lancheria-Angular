@@ -5,4 +5,5 @@ export interface Produto {
     preco: number;
     categoria?: string;
     imagemUrl?: string;
+    isDishOfTheDay?: boolean;
 }
