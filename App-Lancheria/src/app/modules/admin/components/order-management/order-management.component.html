@@ -29,7 +29,7 @@
                 </h2>
                 <div [id]="'collapsePedido' + order.id" class="accordion-collapse collapse" aria-labelledby="'headingPedido' + order.id" [attr.data-bs-parent]="'#accordionPedido' + order.id">
                   <div class="accordion-body">
-                    <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.cidade }}, {{ order.cep }}</div>
+                    <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.observacoes}}, {{ order.cep }}, {{order.whatsapp}}</div>
                     <div><strong>Método de Pagamento:</strong> {{ order.metodoPagamento }}</div>
                     <ul>
                       <li *ngFor="let item of order.itens">

@@ -20,8 +20,9 @@ export class OrderCreateComponent implements OnInit {
   };
   bairro: string = '';
   endereco: string = '';
-  cidade: string = '';
+  observacoes: string = '';
   cep: string = '';
+  whatsapp: string = '';
   metodoPagamento: string = '';
   taxaEntrega: number = 0;// Garantir um número, mesmo se for 0
 
@@ -63,7 +64,8 @@ export class OrderCreateComponent implements OnInit {
     total: totalPedido, // Total inclui a taxa de entrega
     endereco: this.endereco,
     bairro: this.bairro,
-    cidade: this.cidade,
+    observacoes: this.observacoes,
+    whatsapp: this.whatsapp,
     cep: this.cep,
     metodoPagamento: this.metodoPagamento,
     taxaEntrega: this.taxaEntrega, // Adicionando a taxa de entrega ao pedido

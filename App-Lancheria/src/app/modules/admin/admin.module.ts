@@ -6,7 +6,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { ManageProductsComponent } from './components/manage-products/manage-products.component';
 import { OrderManagementComponent } from './components/order-management/order-management.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
-import { InventoryManagementComponent } from './components/inventory-management/inventory-management.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
@@ -19,7 +18,6 @@ import { ManageDishOfTheDayComponent } from './components/manage-dish-of-the-day
     ManageProductsComponent,
     OrderManagementComponent,
     AnalyticsComponent,
-    InventoryManagementComponent,
     ManageDishOfTheDayComponent,
   ],
   imports: [
