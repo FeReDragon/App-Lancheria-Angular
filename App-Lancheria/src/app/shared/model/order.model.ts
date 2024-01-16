@@ -7,7 +7,6 @@ export interface OrderItem {
     nome: string; 
 }
 
-// order.model.ts
 export interface Order {
     id?: number;
     usuarioId?: number;
@@ -18,8 +17,10 @@ export interface Order {
 
     bairro: string;
     endereco: string;
-    cidade: string;
+    observacoes: string;
     cep: string;
+    whatsapp: string;
     metodoPagamento: string;
+    taxaEntrega?: number;
 }
 

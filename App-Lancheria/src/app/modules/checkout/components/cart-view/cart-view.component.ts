@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from '../../../../shared/model/cart.model';
+import { Produto } from '../../../../shared/model/product.model'; // Importe o modelo de Produto
 import { CartService } from '../../../../core/services/cart.service';
-import { AuthService } from '../../../../core/services/auth.service'; // Importe o AuthService
+import { ProductService } from '../../../../core/services/product.service'; // Importe o ProductService
+import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +19,14 @@ export class CartViewComponent implements OnInit {
     usuarioId: 0
   };
 
-  constructor(private cartService: CartService, private authService: AuthService, private router: Router) {} // Injete o AuthService
+  produtos: Produto[] = []; // Lista de produtos para a modal
+
+  constructor(
+    private cartService: CartService, 
+    private productService: ProductService, // Injete o ProductService
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
   ngOnInit() {
     const usuarioAtual = this.authService.currentUserValue; 
@@ -25,22 +34,35 @@ export class CartViewComponent implements OnInit {
 
     if (usuarioId) {
       this.cartService.getCart(usuarioId).subscribe(cart => {
-        this.cart = cart || this.cart; // Se 'cart' for null, mantém o valor inicial
+        this.cart = cart || this.cart;
+      });
+
+      this.productService.getProdutos().subscribe(produtos => {
+        this.produtos = produtos;
       });
     }
     // lógica alternativa aqui se usuarioId for null
   }
 
   removerItem(item: CartItem) {
-    // Esta função também precisa do ID do usuário autenticado
     const usuarioId = this.authService.currentUserValue ? this.authService.currentUserValue.id : null;
-
     if (usuarioId) {
       this.cartService.removerItem(usuarioId, item.produtoId).subscribe(cart => {
-        this.cart = cart || this.cart; // Se 'cart' for null, mantém o valor inicial
+        this.cart = cart || this.cart;
       });
     }
-    // Adicione lógica alternativa aqui se usuarioId for null
+    // Lógica alternativa para usuarioId null
+  }
+
+  adicionarItemAoCarrinho(produto: Produto, quantidade: number = 1) {
+    const usuarioId = this.authService.currentUserValue ? this.authService.currentUserValue.id : null;
+    if (usuarioId) {
+      this.cartService.adicionarAoCarrinho(usuarioId, produto, quantidade).subscribe(cart => {
+        this.cart = cart;
+        // Feche a modal aqui, se necessário
+      });
+    }
+    // Lógica alternativa para usuarioId null
   }
 
   calcularTotal() {
@@ -48,6 +70,6 @@ export class CartViewComponent implements OnInit {
   }
 
   finalizarPedido() {
-    this.router.navigate(['/pedido']); // Navega para a rota do OrderCreateComponent
+    this.router.navigate(['/pedido']);
   }
 }

@@ -5,6 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router'; 
+import { DishOfTheDayModule } from '../modules/dish-of-the-day/dish-of-the-day.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    DishOfTheDayModule
     // Outros módulos...
   ],
   exports: [

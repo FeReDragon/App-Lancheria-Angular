@@ -26,7 +26,6 @@ export class OrdersService {
     if (orderData.id) {
       return this.http.put<Order>(`${this.apiUrl}/${orderData.id}`, orderData);
     } else {
-      // Lançar um erro ou retornar um Observable que indica um erro
       return throwError(() => new Error('Pedido sem ID'));
     }
   }

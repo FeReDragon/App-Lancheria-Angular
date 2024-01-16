@@ -9,14 +9,32 @@
   
 
   .background-produtos {
-    background-image: url('/assets/img/wpp-lanche2.jpg');
+    background-image: url('/assets/img/productmanag.png');
     background-size: cover;
     background-position: center;
   }
   
   .background-pedidos {
-    background-image: url('/assets/img/entrega.png');
+    background-image: url('/assets/img/ordemng.png');
     background-size: cover;
     background-position: center; 
+  }
+  .background-promocoes {
+    background-image: url('/assets/img/produtomen.png');
+    background-size: cover;
+    background-position: center; 
+  }
+  
+  .background-prato-do-dia {
+    background-image: url('/assets/img/pratododia.png'); 
+    background-size: cover;
+    background-position: center; 
+  }
+  
+  .paragrafo-personalizado {
+    background-color: rgba(54, 53, 53, 0.616);
+    color: white;
+    padding: 5px;
+    border-radius: 5px; 
   }
   

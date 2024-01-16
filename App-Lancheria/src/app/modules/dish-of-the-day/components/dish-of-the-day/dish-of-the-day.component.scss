@@ -1,0 +1,10 @@
+.card-img-top {
+    width: 100%; /* Faz a imagem ocupar toda a largura do card */
+    height: 200px; /* Altura fixa para as imagens */
+    object-fit: cover; /* Ajusta a imagem de forma a cobrir a área designada sem distorcer */
+  }
+  
+  .card-custom {
+    min-height: 400px; /* Ajuste este valor conforme necessário */
+  }
+

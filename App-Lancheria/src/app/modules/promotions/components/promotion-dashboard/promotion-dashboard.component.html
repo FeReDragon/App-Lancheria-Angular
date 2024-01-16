@@ -1,6 +1,12 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-4">
+  <div class="mb-3">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#promocaoModal">
+      Criar Promoção
+    </button>
+  </div>
+
   <!-- Lista de Promoções -->
   <div class="row">
     <div class="col-lg-4 col-md-6 mb-4" *ngFor="let promocao of promocoes">
@@ -9,6 +15,8 @@
           <h5 class="card-title mb-0">{{ promocao.titulo }}</h5>
         </div>
         <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Início: {{ promocao.dataInicio | date:'mediumDate' }}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Fim: {{ promocao.dataFim | date:'mediumDate' }}</h6>
           <h6 class="card-subtitle mb-2 text-muted">Desconto: {{ promocao.desconto }}%</h6>
           <h6 class="card-subtitle mb-2 text-muted">Produtos Aplicáveis:</h6>
           <ul class="list-unstyled">
@@ -25,60 +33,71 @@
     </div>
   </div>
 
-  <!-- Formulário para Adicionar/Editar Promoções -->
-  <div class="card mt-5 shadow">
-    <div class="card-body">
-      <h4 class="card-title mb-4">Adicionar/Editar Promoção</h4>
-      <form [formGroup]="promocaoForm" (ngSubmit)="onSubmit()" class="row g-3">
-        <div class="col-md-6">
-          <label for="titulo" class="form-label">Título:</label>
-          <input type="text" id="titulo" formControlName="titulo" class="form-control">
+  <!-- Modal para Adicionar/Editar Promoções -->
+  <div class="modal fade" id="promocaoModal" tabindex="-1" aria-labelledby="promocaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="promocaoModalLabel">Adicionar/Editar Promoção</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="col-md-6">
-          <label for="desconto" class="form-label">Desconto (%):</label>
-          <input type="number" id="desconto" formControlName="desconto" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label for="dataInicio" class="form-label">Data Início:</label>
-          <input type="date" id="dataInicio" formControlName="dataInicio" class="form-control">
-        </div>
-        <div class="col-md-6">
-          <label for="dataFim" class="form-label">Data Fim:</label>
-          <input type="date" id="dataFim" formControlName="dataFim" class="form-control">
-        </div>
+        <div class="modal-body">
+          <form [formGroup]="promocaoForm" class="row g-3">
+            <div class="col-md-6">
+              <label for="titulo" class="form-label">Título:</label>
+              <input type="text" id="titulo" formControlName="titulo" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="desconto" class="form-label">Desconto (%):</label>
+              <input type="number" id="desconto" formControlName="desconto" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="dataInicio" class="form-label">Data Início:</label>
+              <input type="date" id="dataInicio" formControlName="dataInicio" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="dataFim" class="form-label">Data Fim:</label>
+              <input type="date" id="dataFim" formControlName="dataFim" class="form-control">
+            </div>
 
-        <!-- Accordion para escolha dos produtos -->
-        <div class="col-12">
-          <label class="form-label">Escolha os Produtos:</label>
-          <div class="accordion" id="accordionProdutos">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingProdutos">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProdutos" aria-expanded="true" aria-controls="collapseProdutos">
-                  Produtos Disponíveis
-                </button>
-              </h2>
-              <div id="collapseProdutos" class="accordion-collapse collapse show" aria-labelledby="headingProdutos" data-bs-parent="#accordionProdutos">
-                <div class="accordion-body">
-                  <div class="row">
-                    <div class="col-md-4" *ngFor="let produto of produtos">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" [value]="produto.id" formControlName="produtosAplicaveis" id="produto{{produto.id}}">
-                        <label class="form-check-label" for="produto{{produto.id}}">
-                          {{ produto.nome }}
-                        </label>
+            <!-- Accordion para escolha dos produtos -->
+            <div class="col-12">
+              <label class="form-label">Escolha os Produtos:</label>
+              <div class="accordion" id="accordionProdutos">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingProdutos">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProdutos" aria-expanded="false" aria-controls="collapseProdutos">
+                      Produtos Disponíveis
+                    </button>
+                  </h2>
+                  <div id="collapseProdutos" class="accordion-collapse collapse" aria-labelledby="headingProdutos" data-bs-parent="#accordionProdutos">
+                    <div class="accordion-body">
+                      <div class="row">
+                        <div class="col-md-4" *ngFor="let produto of produtos">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" 
+                                   [value]="produto.id" 
+                                   [checked]="promocaoForm.get('produtosAplicaveis')?.value?.includes(produto.id)"
+                                   (change)="onCheckChange(produto.id, $event)" 
+                                   id="produto{{produto.id}}">
+                            <label class="form-check-label" for="produto{{produto.id}}">
+                              {{ produto.nome }}
+                            </label>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </div>
-
-        <div class="col-12 d-flex justify-content-end">
-          <button type="submit" class="btn btn-success">Salvar Promoção</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-success" (click)="onSubmit()">Salvar Promoção</button>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>

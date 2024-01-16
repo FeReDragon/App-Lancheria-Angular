@@ -8,3 +8,29 @@
     height: 380px; /* Altura ajustada */
   }
   
+  .product-image-container {
+    position: relative;
+  }
+  
+
+  .product-image-container {
+    position: relative;
+  }
+  
+  .most-sold-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px; /* Ajuste o tamanho conforme necessário */
+    height: 80px; /* Ajuste o tamanho conforme necessário */
+  }
+
+
+  .promotion-badge-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;  /* Posicionamento à esquerda */
+    width: 80px; /* Tamanho ajustado para corresponder à imagem mais vendida */
+    height: 80px; /* Tamanho ajustado para corresponder à imagem mais vendida */
+  }
+  

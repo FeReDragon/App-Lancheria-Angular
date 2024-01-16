@@ -11,6 +11,7 @@ import { ManageProductsComponent } from './modules/admin/components/manage-produ
 import { AdminDashboardComponent } from './modules/admin/components/admin-dashboard/admin-dashboard.component';
 import { OrderManagementComponent } from './modules/admin/components/order-management/order-management.component';
 import { PromotionDashboardComponent } from './modules/promotions/components/promotion-dashboard/promotion-dashboard.component';
+import { ManageDishOfTheDayComponent } from './modules/admin/components/manage-dish-of-the-day/manage-dish-of-the-day.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Rota raiz redireciona para /home
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'dashboard', component: AdminDashboardComponent }, 
   { path: 'gerenciamento-pedidos', component: OrderManagementComponent },
   { path: 'promo', component: PromotionDashboardComponent },
+  { path: 'prato-do-dia', component: ManageDishOfTheDayComponent },
   // Outras rotas podem ser adicionadas aqui
 ];
 

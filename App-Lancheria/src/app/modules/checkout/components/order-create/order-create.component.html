@@ -1,37 +1,66 @@
-<app-navbar></app-navbar> 
+<app-navbar></app-navbar>
 
-    <div class="container my-5">
-        <div class="order-form">
-        <h2>Resumo do Pedido</h2>
+<div class="container my-5">
+    <div class="order-form">
+        <h2 class="text-center">Resumo do Pedido</h2>
 
         <!-- Resumo do Carrinho -->
         <div *ngIf="cart && cart.itens.length > 0">
             <h3>Itens no Carrinho:</h3>
-            <ul>
-            <li *ngFor="let item of cart.itens">
-                {{ item.nome }} - {{ item.quantidade }} x {{ item.preco | currency }}
-            </li>
+            <ul class="list-group">
+                <li *ngFor="let item of cart.itens" class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ item.nome }}
+                    <span class="badge badge-primary badge-pill">{{ item.quantidade }}</span>
+                    <span class="badge badge-success badge-pill">{{ item.preco | currency }}</span>
+                </li>
             </ul>
+            
+            <!-- Exibir Taxa de Entrega -->
+            <p *ngIf="taxaEntrega !== null" class="mt-3"><strong>Taxa de Entrega:</strong> {{ taxaEntrega | currency }}</p>
+            
+            <!-- Exibir Total do Pedido (incluindo taxa de entrega) -->
+            <p class="mt-2"><strong>Total do Pedido:</strong> {{ (cart.totalPreco + taxaEntrega) | currency }}</p>
         </div>
 
         <!-- Formulário de Endereço -->
-        <h3>Informações de Entrega</h3>
-        <input type="text" [(ngModel)]="endereco" placeholder="Endereço/Rua" />
-        <input type="text" [(ngModel)]="bairro" placeholder="bairro" />
-        <input type="text" [(ngModel)]="cidade" placeholder="Cidade" />
-        <input type="text" [(ngModel)]="cep" placeholder="CEP" />
-
+        <h3 class="mt-4">Informações de Entrega</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="endereco" class="form-control mt-2" placeholder="Endereço/Rua">
+            </div>
+            <div class="col-md-6">
+                <select [(ngModel)]="bairro" (ngModelChange)="atualizarTaxaEntrega()" class="form-control mt-2">
+                    <option value="" disabled selected>Selecione o Bairro</option> <!-- Opção em branco com texto informativo -->
+                    <option value="ingleses">Ingleses</option>
+                    <option value="rio vermelho">Rio Vermelho</option>
+                    <option value="vargem">Vargem</option>
+                    <option value="canasvieiras">Canasvieiras</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="observacoes" class="form-control mt-2" placeholder="observacoes">
+            </div>
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="cep" class="form-control mt-2" placeholder="CEP">
+            </div>
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="whatsapp" class="form-control mt-2" placeholder="whatsapp">
+            </div>
+        </div>
 
         <!-- Método de Pagamento -->
-        <h3>Método de Pagamento</h3>
-        <select [(ngModel)]="metodoPagamento">
-            <option value="cartao">Cartão de Crédito</option>
-            <option value="cartao">Cartão de Débito</option>
-            <option value="boleto">Dinheiro</option>
+        <h3 class="mt-4">Método de Pagamento</h3>
+        <select [(ngModel)]="metodoPagamento" class="form-control mt-2">
+            <option value="" disabled selected>Selecione a Forma de Pagamento</option> <!-- Opção em branco com texto informativo -->
+            <option value="cartao_credito">Cartão de Crédito</option>
+            <option value="cartao_debito">Cartão de Débito</option>
+            <option value="dinheiro">Dinheiro</option>
         </select>
-
-        <button (click)="enviarPedido()">Enviar Pedido</button>
-        </div>
+        
+        <button class="btn btn-primary mt-3" (click)="enviarPedido()">Enviar Pedido</button>
     </div>
-  
-  <app-footer></app-footer>
+</div>
+
+<app-footer></app-footer>
