@@ -2,8 +2,9 @@
 
 <div class="custom-margin-container">
   <div class="container-fluid my-5">
+
+    <!-- Seção de Métricas -->
     <div class="row">
-      <!-- Seção de Métricas -->
       <div class="col-md-3 mb-4">
         <div class="card h-100 text-center">
           <div class="card-body">
@@ -18,7 +19,7 @@
         <div class="card h-100 text-center">
           <div class="card-body">
             <i class="fa fa-chart-line fa-3x text-success" aria-hidden="true"></i>
-            <h5 class="card-title mt-3">Pedidios (24h)</h5>
+            <h5 class="card-title mt-3">Pedidos (24h)</h5>
             <strong>{{ totalPedidosUltimoDia }}</strong>
           </div>
         </div>
@@ -43,15 +44,16 @@
         </div>
       </div>
     </div>
-    
+
+    <!-- Seção de Gerenciamento -->
     <div class="row">
       <!-- Gerenciamento de Produtos -->
       <div class="col-md-6 mb-4">
         <div class="card border-primary h-100">
           <div class="card-header bg-primary text-white">Produtos Cadastrados</div>
           <div class="card-body background-produtos">
-            <h5 class="text-white">Total: {{ totalProdutos }}</h5>
-            <button class="btn btn-primary mt-3" (click)="navegarParaGerenciamentoProdutos()">Produtos</button>
+            <p class="paragrafo-personalizado"><strong>Total:</strong> {{ totalProdutos }}</p>
+            <a class="btn btn-primary mt-3" routerLink="/adm-itens">Produtos</a>
           </div>
         </div>
       </div>
@@ -59,44 +61,42 @@
       <!-- Gerenciamento de Pedidos -->
       <div class="col-md-6 mb-4">
         <div class="card border-success h-100">
-          <div class="card-header bg-success text-white">Pedidios</div>
+          <div class="card-header bg-success text-white">Gerenciamento de Pedidos</div>
           <div class="card-body background-pedidos">
-            <button class="btn btn-success mt-3" (click)="navegarParaGerenciamentoPedidios()">Gerenciar Pedidos</button>
+              <p class="paragrafo-personalizado"><strong>PedidosPendentes:</strong> {{ totalPedidosPendentes }}</p>
+              <a class="btn btn-success mt-3" routerLink="/gerenciamento-pedidos">Pedidos</a>
           </div>
         </div>
-      </div>
+    </div>
   </div>
-
-
-  <div class="row">
-    <!-- Gerenciamento de Promoções -->
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-lg">
-        <div class="card-header bg-dark text-white">Gerenciamento de Promoções</div>
-        <div class="card-body">
-          <p>Ferramentas para Promoções</p>
-          <!-- Botão para a rota de promoções -->
-          <a class="btn btn-dark mt-3" routerLink="/promo">Promoções</a>
-        </div>
+<div class="row">
+  <!-- Gerenciamento de Promoções -->
+  <div class="col-md-6 mb-4">
+    <div class="card shadow-lg">
+      <div class="card-header bg-dark text-white">Gerenciamento de Promoções</div>
+      <div class="card-body background-promocoes">
+        <p class="paragrafo-personalizado"><strong>Total de Promoções:</strong> {{ totalPromocoes }}</p>
+        <a class="btn btn-dark mt-3" routerLink="/promo">Promoções</a>
       </div>
     </div>
-
-    <div class="col-md-6 mb-4">
-      <div class="card shadow-lg">
-        <div class="card-header bg-dark text-white">Gerenciamento Prato do dia</div>
-        <div class="card-body">
-          <p>Ferramentas para gerenciar Prato do Dia!</p>
-          <!-- Botão para a rota de promoções -->
-          <a class="btn btn-dark mt-3" routerLink="/prato-do-dia">Prato do dia</a>
-        </div>
+  </div>
+  
+  <!-- Gerenciamento Prato do Dia -->
+  <div class="col-md-6 mb-4">
+    <div class="card shadow-lg">
+      <div class="card-header bg-dark text-white">Gerenciamento Prato do Dia</div>
+      <div class="card-body background-prato-do-dia">
+        <p class="paragrafo-personalizado"><strong>Total de Pratos do Dia:</strong> {{ totalPratosDoDia }}</p>
+        <a class="btn btn-dark mt-3" routerLink="/prato-do-dia">Prato do dia</a>
       </div>
     </div>
-
-  </div>
   </div>
 </div>
-<app-footer></app-footer>
 
+  </div>
+</div>
+
+<app-footer></app-footer>
 
 
 

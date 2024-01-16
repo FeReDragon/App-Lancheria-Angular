@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../../core/services/product.service';
 import { OrdersService } from '../../../../core/services/orders-service.service';
 import { Router } from '@angular/router';
+import { PromotionService } from 'src/app/core/services/promotion.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -14,10 +15,16 @@ export class AdminDashboardComponent implements OnInit {
   totalPedidosUltimoDia: number = 0;
   itemMaisVendido: string = '';
   frequenciaItens: {[key: string]: number} = {};
+  totalPromocoes: number = 0;
+  totalPedidosPendentes: number = 0;
+  totalPratosDoDia: number = 0;
+
+
 
   constructor(
     private productService: ProductService,
     private ordersService: OrdersService, 
+    private promotionService: PromotionService,
     private router: Router
   ) {}
 
@@ -26,6 +33,13 @@ export class AdminDashboardComponent implements OnInit {
     this.obterTotalPedidos();
     this.obterTotalPedidosUltimoDia();
     this.obterItemMaisVendido();
+    this.obterTotalPromocoes();
+    this.obterTotalPedidosPendentes();
+    this.obterTotalPratosDoDia();
+
+    setInterval(() => {
+      this.obterTotalPedidosPendentes();
+    }, 20000); // 
   }
 
   obterTotalProdutos() {
@@ -86,15 +100,41 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
+  obterTotalPromocoes() {
+    this.promotionService.getPromocoes().subscribe(
+      promocoes => {
+        this.totalPromocoes = promocoes.length;
+      },
+      erro => {
+        console.error('Erro ao obter total de promoções', erro);
+      }
+    );
+  }
+
+  obterTotalPedidosPendentes() {
+    this.ordersService.getOrders().subscribe(
+      pedidos => {
+        this.totalPedidosPendentes = pedidos.filter(pedido => pedido.status === 'pendente').length;
+      },
+      erro => {
+        console.error('Erro ao obter total de pedidos pendentes', erro);
+      }
+    );
+  }
+
+  obterTotalPratosDoDia() {
+    this.productService.getProdutos().subscribe(
+      produtos => {
+        this.totalPratosDoDia = produtos.filter(produto => produto.isDishOfTheDay).length;
+      },
+      erro => {
+        console.error('Erro ao obter total de pratos do dia', erro);
+      }
+    );
+  }
+  
+
   encontrarItemMaisVendido(): string {
     return Object.keys(this.frequenciaItens).reduce((a, b) => this.frequenciaItens[a] > this.frequenciaItens[b] ? a : b);
-  }
-
-  navegarParaGerenciamentoProdutos() {
-    this.router.navigate(['/adm-itens']);
-  }
-
-  navegarParaGerenciamentoPedidios() {
-    this.router.navigate(['/gerenciamento-pedidos']);
   }
 }
