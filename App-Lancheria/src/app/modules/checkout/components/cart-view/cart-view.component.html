@@ -68,6 +68,16 @@
 
 
     <div class="text-end" *ngIf="cart">
+      <!-- Ícone de Informações com Tooltip -->
+      <p>
+        Taxa de Entrega
+        <i class="fa fa-info-circle mb-1" data-toggle="tooltip" data-placement="top" title="taxa de entrega
+        ingleses: $5
+        rio vermelho: $7
+        vargem: $10
+        canasvieiras: $15"></i>
+      </p>
+
       <h3>Total: {{ calcularTotal() | currency }}</h3>
       <div>
         <button class="btn btn-success mb-2" (click)="finalizarPedido()">Finalizar Pedido</button>

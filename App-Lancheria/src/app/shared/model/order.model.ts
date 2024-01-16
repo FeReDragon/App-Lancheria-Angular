@@ -21,5 +21,6 @@ export interface Order {
     cidade: string;
     cep: string;
     metodoPagamento: string;
+    taxaEntrega?: number;
 }
 

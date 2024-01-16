@@ -1,37 +1,47 @@
 <app-navbar></app-navbar> 
 
-    <div class="container my-5">
-        <div class="order-form">
+<div class="container my-5">
+    <div class="order-form">
         <h2>Resumo do Pedido</h2>
 
         <!-- Resumo do Carrinho -->
         <div *ngIf="cart && cart.itens.length > 0">
             <h3>Itens no Carrinho:</h3>
             <ul>
-            <li *ngFor="let item of cart.itens">
-                {{ item.nome }} - {{ item.quantidade }} x {{ item.preco | currency }}
-            </li>
+                <li *ngFor="let item of cart.itens">
+                    {{ item.nome }} - {{ item.quantidade }} x {{ item.preco | currency }}
+                </li>
             </ul>
+            <!-- Exibir Taxa de Entrega -->
+            <p *ngIf="taxaEntrega !== null"><strong>Taxa de Entrega:</strong> {{ taxaEntrega | currency }}</p>
+            <!-- Exibir Total do Pedido (incluindo taxa de entrega) -->
+           <p><strong>Total do Pedido:</strong> {{ (cart.totalPreco + taxaEntrega) | currency }}</p>
         </div>
+   <!-- Formulário de Endereço -->
+   <h3>Informações de Entrega</h3>
+   <input type="text" [(ngModel)]="endereco" placeholder="Endereço/Rua" />
 
-        <!-- Formulário de Endereço -->
-        <h3>Informações de Entrega</h3>
-        <input type="text" [(ngModel)]="endereco" placeholder="Endereço/Rua" />
-        <input type="text" [(ngModel)]="bairro" placeholder="bairro" />
-        <input type="text" [(ngModel)]="cidade" placeholder="Cidade" />
-        <input type="text" [(ngModel)]="cep" placeholder="CEP" />
+   <!-- Campo Select para Bairros -->
+   <select [(ngModel)]="bairro" (ngModelChange)="atualizarTaxaEntrega()">
+    <option value="ingleses">Ingleses</option>
+    <option value="rio vermelho">Rio Vermelho</option>
+    <option value="vargem">Vargem</option>
+    <option value="canasvieiras">Canasvieiras</option>
+</select>
 
+   <input type="text" [(ngModel)]="cidade" placeholder="Cidade" />
+   <input type="text" [(ngModel)]="cep" placeholder="CEP" />
 
-        <!-- Método de Pagamento -->
-        <h3>Método de Pagamento</h3>
-        <select [(ngModel)]="metodoPagamento">
-            <option value="cartao">Cartão de Crédito</option>
-            <option value="cartao">Cartão de Débito</option>
-            <option value="boleto">Dinheiro</option>
-        </select>
-
-        <button (click)="enviarPedido()">Enviar Pedido</button>
-        </div>
+    <!-- Método de Pagamento -->
+    <h3>Método de Pagamento</h3>
+    <select [(ngModel)]="metodoPagamento">
+    <option value="cartao_credito">Cartão de Crédito</option>
+    <option value="cartao_debito">Cartão de Débito</option>
+    <option value="dinheiro">Dinheiro</option>
+    </select>
+        <button class="btn btn-primary mt-3" (click)="enviarPedido()">Enviar Pedido</button>
     </div>
-  
-  <app-footer></app-footer>
+
+    </div>
+
+<app-footer></app-footer>
