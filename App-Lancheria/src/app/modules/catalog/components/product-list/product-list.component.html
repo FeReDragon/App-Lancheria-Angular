@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-4">
+  <!-- Seção de Categorias -->
   <div class="card shadow-lg bg-light bg-opacity-10">
     <div class="card-body">
       <h2 class="text-center mb-3">Categorias</h2>
@@ -20,16 +21,22 @@
   </div>
 </div>
 
+<!-- Seção de Produtos -->
 <div class="container my-5" *ngIf="produtos && produtos.length > 0">
   <div class="row">
     <div class="col-md-3 mb-3" *ngFor="let produto of produtos">
       <div class="card card-custom border-0 bg-light bg-opacity-50" style="position: relative;">
-        <img [src]="produto.imagemUrl" class="card-img-top card-img-custom p-3" alt="Imagem do Produto">
+        <div class="product-image-container">
+          <img [src]="produto.imagemUrl" class="card-img-top card-img-custom p-3" alt="Imagem do Produto">
+          <img *ngIf="produto.nome === itemMaisVendido" src="assets/img/maisvendido.png" class="most-sold-badge" />
+          <img *ngIf="produtosEmPromocaoIds.includes(produto.id)" src="assets/img/super-promo.png" class="promotion-badge-left" />
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{ produto.nome }}</h5>
           <p class="card-text">{{ produto.descricao }}</p>
           <p class="card-text">Preço: {{ produto.preco | currency }}</p>
         </div>
+        
         <!-- Botões posicionados na parte inferior do card -->
         <div style="position: absolute; bottom: 10px; left: 10px; right: 10px;">
           <hr>
@@ -43,12 +50,11 @@
   </div>
 </div>
 
+<!-- Mensagem quando não há produtos -->
+<div class="container" *ngIf="!produtos
 
-
-
-
-<div class="container" *ngIf="!produtos || produtos.length === 0">
+ou produtos.length === 0">
   <p>Nenhum produto encontrado nesta categoria.</p>
 </div>
 
-<app-footer>
+<app-footer></app-footer>

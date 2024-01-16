@@ -7,6 +7,7 @@ import { Category } from '../../../../shared/model/category.model';
 import { CategoryService } from '../../../../core/services/category.service';
 import { CartService } from '../../../../core/services/cart.service';
 import { AuthService } from '../../../../core/services/auth.service';
+import { OrdersService } from 'src/app/core/services/orders-service.service';
 
 @Component({
   selector: 'app-product-list',
@@ -21,19 +22,24 @@ export class ProductListComponent implements OnInit {
   produtoSelecionado?: Produto;
   quantidadeSelecionada: number = 1;
   selectedCategoriaNome?: string;
+  itemMaisVendido: string = '';
+  frequenciaItens: {[key: string]: number} = {};
+  produtosEmPromocaoIds: number[] = [];
 
   constructor(
     private productService: ProductService,
     private promotionService: PromotionService, 
     private categoryService: CategoryService,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private ordersService: OrdersService, 
   ) {}
 
   ngOnInit() {
     this.loadCategorias();
     this.loadProdutos();
     this.loadPromocoes(); 
+    this.obterItemMaisVendido();
   }
 
   loadCategorias() {
@@ -57,7 +63,9 @@ export class ProductListComponent implements OnInit {
     this.promotionService.getPromocoes().subscribe(
       data => {
         this.promocoes = data;
-        this.applyPromotionsToProducts(); // Aplicar promoções após carregar
+        this.produtosEmPromocaoIds = data
+          .flatMap(promocao => promocao.produtosAplicaveis || []);
+        this.applyPromotionsToProducts();
       },
       error => console.error(error)
     );
@@ -113,6 +121,29 @@ export class ProductListComponent implements OnInit {
     }
   }
   
+  obterItemMaisVendido() {
+    this.ordersService.getOrders().subscribe(
+      pedidos => {
+        pedidos.forEach(pedido => {
+          pedido.itens.forEach(item => {
+            if (this.frequenciaItens[item.nome]) {
+              this.frequenciaItens[item.nome] += item.quantidade;
+            } else {
+              this.frequenciaItens[item.nome] = item.quantidade;
+            }
+          });
+        });
+        this.itemMaisVendido = this.encontrarItemMaisVendido();
+      },
+      erro => {
+        console.error('Erro ao obter pedidos', erro);
+      }
+    );
+  }
+
+  encontrarItemMaisVendido(): string {
+    return Object.keys(this.frequenciaItens).reduce((a, b) => this.frequenciaItens[a] > this.frequenciaItens[b] ? a : b);
+  }
   
 
 }
