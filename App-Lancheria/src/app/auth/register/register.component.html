@@ -3,68 +3,78 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
                     Registro
                 </div>
                 <div class="card-body">
                     <form (ngSubmit)="onSubmit()">
-                        <div class="row">
-                            <div class="col-md-4 form-group mb-3">
+                        <div class="row mb-3">
+                            <!-- Nome -->
+                            <div class="col-md-6 form-group">
                                 <label for="inputName">Nome</label>
-                                <input type="text" class="form-control" id="inputName" [(ngModel)]="user.nome" name="nome" placeholder="Digite seu nome completo">
+                                <input type="text" class="form-control" id="inputName" [(ngModel)]="user.nome" name="nome" #nome="ngModel" required>
+                                <div *ngIf="nome.invalid && nome.touched" class="alert alert-warning mt-2">
+                                    Nome é obrigatório.
+                                </div>
                             </div>
-                            <div class="col-md-4 form-group mb-3">
+                        
+                            <!-- E-mail -->
+                            <div class="col-md-6 form-group">
                                 <label for="inputEmail">E-mail</label>
-                                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="user.email" name="email" placeholder="Digite seu e-mail">
+                                <input type="email" class="form-control" id="inputEmail" [(ngModel)]="user.email" name="email" #email="ngModel" required email>
+                                <div *ngIf="email?.errors?.['required'] && (email.dirty || email.touched)" class="alert alert-warning mt-2">
+                                    E-mail é obrigatório.
+                                </div>
+                                <div *ngIf="email?.errors?.['email'] && (email.dirty || email.touched)" class="alert alert-warning mt-2">
+                                    Formato de e-mail inválido.
+                                </div>
                             </div>
-                            <div class="col-md-4 form-group mb-3">
+                        </div>
+
+                        <div class="row mb-3">
+                            <!-- Telefone -->
+                            <div class="col-md-6 form-group">
                                 <label for="inputPhone">Telefone</label>
-                                <input type="tel" class="form-control" id="inputPhone" [(ngModel)]="user.telefone" name="telefone" placeholder="Digite seu telefone">
+                                <input type="tel" class="form-control" id="inputPhone" [(ngModel)]="user.telefone" name="telefone" #telefone="ngModel" required pattern="[0-9]{11}">
+                                <div *ngIf="telefone.invalid && telefone.touched" class="alert alert-warning mt-2">
+                                    <div *ngIf="telefone.errors?.['required']">Telefone é obrigatório.</div>
+                                    <div *ngIf="telefone.errors?.['pattern']">Formato de telefone inválido. Esperado: 11 dígitos numéricos.</div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 form-group mb-3">
-                                <label for="inputZip">CEP</label>
-                                <input type="text" class="form-control" id="inputZip" [(ngModel)]="user.cep" name="cep" placeholder="CEP">
-                            </div>
-                            <div class="col-md-4 form-group mb-3">
-                                <label for="inputCity">Cidade</label>
-                                <input type="text" class="form-control" id="inputCity" [(ngModel)]="user.cidade" name="cidade" placeholder="Cidade" readonly>
-                            </div>
-                            <div class="col-md-4 form-group mb-3">
-                                <label for="inputState">Estado</label>
-                                <input type="text" class="form-control" id="inputState" [(ngModel)]="user.estado" name="estado" placeholder="Estado" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 form-group mb-3">
-                                <label for="inputAddress">Endereço</label>
-                                <input type="text" class="form-control" id="inputAddress" [(ngModel)]="user.endereco" name="endereco" placeholder="Rua, Número, Complemento" readonly>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 form-group mb-3">
+                            
+                        
+                            <!-- Senha -->
+                            <div class="col-md-6 form-group">
                                 <label for="inputPassword">Senha</label>
-                                <input type="password" class="form-control" id="inputPassword" [(ngModel)]="user.senha" name="senha" placeholder="Digite uma senha">
-                            </div>
-                            <div class="col-md-6 form-group mb-3">
-                                <label for="inputConfirmPassword">Confirme sua Senha</label>
-                                <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirme sua senha">
+                                <input type="password" class="form-control" id="inputPassword" [(ngModel)]="user.senha" name="senha" #senha="ngModel" required minlength="6">
+                                <div *ngIf="senha?.invalid && senha?.touched" class="alert alert-warning mt-2">
+                                    Senha é obrigatória.
+                                </div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <!-- Confirmação de Senha -->
+                        <div class="form-group mb-4">
+                            <label for="inputConfirmPassword">Confirme sua Senha</label>
+                            <input type="password" class="form-control" id="inputConfirmPassword" [(ngModel)]="confirmarSenha" name="confirmarSenha" #confirmarSenhaRef="ngModel" required>
+                            <div *ngIf="confirmarSenhaRef.invalid && confirmarSenhaRef.touched" class="alert alert-warning mt-2">
+                                Confirmação de senha é obrigatória.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="!nome.valid || !email.valid || !telefone.valid || !senha.valid || senha.value !== confirmarSenha">Registrar</button>
                     </form>
                 </div>
+                <div *ngIf="sucessoRegistro" class="alert alert-success">
+                    Cadastro realizado com sucesso! Redirecionando para o login...
+                  </div>
+                  
             </div>
         </div>
     </div>
 </div>
-<div>
 
-<app-footer>
+<app-footer></app-footer>
+
+
 

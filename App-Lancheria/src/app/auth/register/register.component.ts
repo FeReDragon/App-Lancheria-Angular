@@ -1,34 +1,33 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../shared/model/user.model'; 
+import { User } from '../../shared/model/user.model';
+import { Router } from '@angular/router';  // Importar Router
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-
-  export class RegisterComponent {
+export class RegisterComponent {
     user: User = {
       nome: '',
       email: '',
       telefone: '',
       senha: '',
-      endereco: '',
-      cidade: '',
-      estado: '',
-      cep: '',
-      tipo: 1 // ou outro valor padrão conforme necessário
+      tipo: 1
     };
-  
-    constructor(private http: HttpClient) {}
-  
+    confirmarSenha: string = '';
+    sucessoRegistro: boolean = false;  // Variável para controle da mensagem de sucesso
+
+    constructor(private http: HttpClient, private router: Router) {}  // Injetar o Router
+
     onSubmit() {
-      // Enviar dados para o JSON Server
-      this.http.post('http://localhost:3000/usuarios', this.user)
-        .subscribe(result => {
-          console.log('Usuário registrado:', result);
-          // Adicione qualquer lógica adicional após o registro aqui
-        });
+      this.http.post('http://localhost:3000/usuarios', this.user).subscribe(result => {
+        console.log('Usuário registrado:', result);
+        this.sucessoRegistro = true;  // Definir o sucesso do registro como verdadeiro
+        setTimeout(() => {
+          this.router.navigate(['/login']);  // Redirecionar para /login após 2 segundos
+        }, 2000);
+      });
     }
-  }
+}

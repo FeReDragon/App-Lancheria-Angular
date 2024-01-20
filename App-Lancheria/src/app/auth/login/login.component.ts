@@ -10,18 +10,22 @@ import { AuthService } from '../../core/services/auth.service';
 export class LoginComponent {
   email: string = '';
   senha: string = '';
+  erroLogin: string = '';  // Adicionado para armazenar a mensagem de erro
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
     this.authService.login(this.email, this.senha).subscribe(
       data => {
-        this.router.navigate(['/home']); // Redireciona para a rota /home
+        this.router.navigate(['/home']);
       },
       error => {
-        console.error('Falha no login');
-        // Tratamento de erro
+        if (error === 'Credenciais inválidas.') {
+          this.erroLogin = 'Falha ao fazer login. Verifique seu e-mail ou senha.';
+        } else {
+          this.erroLogin = 'Verifique seu e-mail ou senha. Erro ao conectar ao serviço de login.';
+        }
       }
     );
   }
-}
+}  
