@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     SharedModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
 
   ]
 })

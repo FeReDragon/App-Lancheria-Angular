@@ -16,7 +16,7 @@
                     <form (ngSubmit)="onLogin()">
                         <!-- E-mail -->
                         <div class="form-group mb-3">
-                            <label for="inputEmail">Endereço de E-mail</label>
+                            <label for="inputEmail">E-mail</label>
                             <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" #emailModel="ngModel" required email>
                             <div *ngIf="emailModel.invalid && emailModel.touched" class="alert alert-warning mt-2">
                                 <div *ngIf="emailModel.errors?.['required']">Endereço de e-mail é obrigatório.</div>
@@ -37,10 +37,14 @@
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="/register">Ainda não tem uma conta? Registre-se</a>
+                    <a [routerLink]="'/registro'">Ainda não tem uma conta? Registre-se</a>
                     <br>
-                    <a href="/forgot-password">Esqueceu sua senha?</a>
+                    <a [routerLink]="'/forgot-password'">Esqueceu sua senha?</a>
+                    
                 </div>
+                
+                
+                
             </div>
         </div>
     </div>

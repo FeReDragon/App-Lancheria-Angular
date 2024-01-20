@@ -33,7 +33,6 @@
                         </div>
 
                         <div class="row mb-3">
-                            <!-- Telefone -->
                             <div class="col-md-6 form-group">
                                 <label for="inputPhone">Telefone</label>
                                 <input type="tel" class="form-control" id="inputPhone" [(ngModel)]="user.telefone" name="telefone" #telefone="ngModel" required pattern="[0-9]{11}">
@@ -43,8 +42,6 @@
                                 </div>
                             </div>
                             
-                        
-                            <!-- Senha -->
                             <div class="col-md-6 form-group">
                                 <label for="inputPassword">Senha</label>
                                 <input type="password" class="form-control" id="inputPassword" [(ngModel)]="user.senha" name="senha" #senha="ngModel" required minlength="6">

@@ -5,10 +5,6 @@
       "email": "user@user.com",
       "telefone": "48999876543",
       "senha": "102030",
-      "endereco": "servidao",
-      "cidade": "florianopolis",
-      "estado": "sc",
-      "cep": "88060328",
       "tipo": 1,
       "id": 1
     },
@@ -17,10 +13,6 @@
       "email": "admin@gmail.com",
       "telefone": "48991234569",
       "senha": "102030",
-      "endereco": "",
-      "cidade": "",
-      "estado": "",
-      "cep": "88060328",
       "tipo": 1,
       "id": 2
     }
@@ -74,7 +66,7 @@
       "preco": 17.5,
       "categoria": "Lanches",
       "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg",
-      "isDishOfTheDay": true
+      "isDishOfTheDay": false
     },
     {
       "id": 3,
@@ -110,7 +102,7 @@
       "preco": 22.99,
       "categoria": "Porções",
       "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png",
-      "isDishOfTheDay": false
+      "isDishOfTheDay": true
     },
     {
       "id": 7,
@@ -1361,7 +1353,7 @@
         }
       ],
       "dataPedido": "2024-01-16T14:39:18.276Z",
-      "status": "em preparacao",
+      "status": "entregue",
       "total": 38.49,
       "endereco": "",
       "bairro": "ingleses",
@@ -1370,7 +1362,7 @@
       "metodoPagamento": "dinheiro",
       "taxaEntrega": 5,
       "id": 32,
-      "userName": "fernando aurelio"
+      "userName": "Usuario Cliente"
     },
     {
       "usuarioId": 1,
@@ -1409,6 +1401,51 @@
       "taxaEntrega": 5,
       "id": 33,
       "userName": "fernando aurelio"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 17.5,
+          "quantidade": 1,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 13.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 7,
+          "nome": "Anéis de Cebola",
+          "preco": 14.99,
+          "quantidade": 1,
+          "imagemUrl": "https://i.pinimg.com/originals/a4/80/52/a48052a6fdaea4b4d1510ebf3f744abd.png"
+        },
+        {
+          "produtoId": 1,
+          "nome": "X-Burger",
+          "preco": 19.99,
+          "quantidade": 1,
+          "imagemUrl": "https://wallpapers.com/images/file/burger-king-s-dainty-burger-fpt1vb84tgaaxl3j.jpg"
+        }
+      ],
+      "dataPedido": "2024-01-18T22:55:01.676Z",
+      "status": "entregue",
+      "total": 76.47,
+      "endereco": "servidao",
+      "bairro": "vargem",
+      "observacoes": "",
+      "whatsapp": "12345678",
+      "cep": "",
+      "metodoPagamento": "cartao_credito",
+      "taxaEntrega": 10,
+      "id": 34,
+      "userName": "Usuario Cliente"
     }
   ],
   "promocoes": []
