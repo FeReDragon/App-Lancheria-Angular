@@ -3,33 +3,53 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
                     Login
                 </div>
                 <div class="card-body">
+                    <!-- Mensagem de erro -->
+                    <div *ngIf="erroLogin" class="alert alert-danger">
+                        {{ erroLogin }}
+                    </div>
+
                     <form (ngSubmit)="onLogin()">
+                        <!-- E-mail -->
                         <div class="form-group mb-3">
-                            <label for="inputEmail">Endereço de E-mail</label>
-                            <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" placeholder="Digite seu e-mail">
+                            <label for="inputEmail">E-mail</label>
+                            <input type="email" class="form-control" id="inputEmail" [(ngModel)]="email" name="email" #emailModel="ngModel" required email>
+                            <div *ngIf="emailModel.invalid && emailModel.touched" class="alert alert-warning mt-2">
+                                <div *ngIf="emailModel.errors?.['required']">Endereço de e-mail é obrigatório.</div>
+                                <div *ngIf="emailModel.errors?.['email']">Formato de e-mail inválido.</div>
+                            </div>
                         </div>
+
+                        <!-- Senha -->
                         <div class="form-group mb-3">
                             <label for="inputPassword">Senha</label>
-                            <input type="password" class="form-control" id="inputPassword" [(ngModel)]="senha" name="senha" placeholder="Digite sua senha">
+                            <input type="password" class="form-control" id="inputPassword" [(ngModel)]="senha" name="senha" #senhaModel="ngModel" required>
+                            <div *ngIf="senhaModel.invalid && senhaModel.touched" class="alert alert-warning mt-2">
+                                Senha é obrigatória.
+                            </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="!emailModel.valid || !senhaModel.valid">Login</button>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <a href="/register">Ainda não tem uma conta? Registre-se</a>
+                <div class="card-footer text-center">
+                    <a [routerLink]="'/registro'">Ainda não tem uma conta? Registre-se</a>
                     <br>
-                    <a href="/forgot-password">Esqueceu sua senha?</a>
+                    <a [routerLink]="'/forgot-password'">Esqueceu sua senha?</a>
+                    
                 </div>
+                
+                
+                
             </div>
         </div>
     </div>
 </div>
 
+<app-footer></app-footer>
 
-<app-footer>
+

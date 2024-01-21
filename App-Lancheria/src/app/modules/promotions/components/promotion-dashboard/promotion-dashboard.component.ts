@@ -22,8 +22,6 @@ export class PromotionDashboardComponent implements OnInit {
     this.promocaoForm = new FormGroup({
       titulo: new FormControl('', Validators.required),
       desconto: new FormControl('', [Validators.required, Validators.min(0), Validators.max(100)]),
-      dataInicio: new FormControl('', Validators.required),
-      dataFim: new FormControl('', Validators.required),
       produtosAplicaveis: new FormArray([])
     });
   }
@@ -90,8 +88,8 @@ export class PromotionDashboardComponent implements OnInit {
     this.promocaoForm.patchValue({
       titulo: promocao.titulo,
       desconto: promocao.desconto,
-      dataInicio: promocao.dataInicio,
-      dataFim: promocao.dataFim
+      // dataInicio: promocao.dataInicio,
+      // dataFim: promocao.dataFim
     });
 
     const produtosAplicaveisArray = (this.promocaoForm.get('produtosAplicaveis') as FormArray);
