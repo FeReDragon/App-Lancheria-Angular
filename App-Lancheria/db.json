@@ -1446,6 +1446,68 @@
       "taxaEntrega": 10,
       "id": 34,
       "userName": "Usuario Cliente"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 13.99,
+          "quantidade": 1,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        },
+        {
+          "produtoId": 6,
+          "nome": "Batata Frita",
+          "preco": 22.99,
+          "quantidade": 1,
+          "imagemUrl": "https://www.kindpng.com/picc/m/7-75955_transparent-batata-frita-png-poro-de-batata-frita.png"
+        }
+      ],
+      "dataPedido": "2024-01-21T20:36:54.721Z",
+      "status": "entregue",
+      "total": 56.98,
+      "endereco": "",
+      "bairro": "",
+      "observacoes": "",
+      "whatsapp": "",
+      "cep": "",
+      "metodoPagamento": "",
+      "taxaEntrega": 20,
+      "id": 35,
+      "userName": "Usuario Cliente"
+    },
+    {
+      "usuarioId": 1,
+      "itens": [
+        {
+          "produtoId": 2,
+          "nome": "X-Salada",
+          "preco": 17.5,
+          "quantidade": 2,
+          "imagemUrl": "https://cdn-0.truththeory.com/wp-content/uploads/2020/10/Beef-Burger-scaled.jpg"
+        },
+        {
+          "produtoId": 3,
+          "nome": "Hot Dog",
+          "preco": 13.99,
+          "quantidade": 2,
+          "imagemUrl": "https://avatars.mds.yandex.net/i?id=433dbf0b6fa705fcc33f2b22a9962c967163b261-10878377-images-thumbs&n=13"
+        }
+      ],
+      "dataPedido": "2024-01-21T20:48:39.335Z",
+      "status": "em preparacao",
+      "total": 67.98,
+      "endereco": "rua sao sebastiao",
+      "bairro": "ingleses",
+      "observacoes": "",
+      "whatsapp": "47852136547",
+      "cep": "88060-200",
+      "metodoPagamento": "cartao_credito",
+      "taxaEntrega": 5,
+      "id": 36,
+      "userName": "Usuario Cliente"
     }
   ],
   "promocoes": []
