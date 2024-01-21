@@ -90,8 +90,8 @@ export class PromotionDashboardComponent implements OnInit {
     this.promocaoForm.patchValue({
       titulo: promocao.titulo,
       desconto: promocao.desconto,
-      dataInicio: promocao.dataInicio,
-      dataFim: promocao.dataFim
+      // dataInicio: promocao.dataInicio,
+      // dataFim: promocao.dataFim
     });
 
     const produtosAplicaveisArray = (this.promocaoForm.get('produtosAplicaveis') as FormArray);
