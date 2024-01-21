@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container my-5">
-    <div class="order-form">
+    <form #form="ngForm" class="order-form">
         <h2 class="text-center">Resumo do Pedido</h2>
 
         <!-- Resumo do Carrinho -->
@@ -26,41 +26,53 @@
         <h3 class="mt-4">Informações de Entrega</h3>
         <div class="row">
             <div class="col-md-6">
-                <input type="text" [(ngModel)]="endereco" class="form-control mt-2" placeholder="Endereço/Rua">
+                <input type="text" [(ngModel)]="endereco" name="endereco" class="form-control mt-2" placeholder="Endereço/Rua" required>
+                <div *ngIf="!endereco" class="alert alert-warning mt-2">Endereço é obrigatório.</div>
             </div>
             <div class="col-md-6">
-                <select [(ngModel)]="bairro" (ngModelChange)="atualizarTaxaEntrega()" class="form-control mt-2">
-                    <option value="" disabled selected>Selecione o Bairro</option> <!-- Opção em branco com texto informativo -->
+                <select [(ngModel)]="bairro" name="bairro" (ngModelChange)="atualizarTaxaEntrega()" class="form-control mt-2" required>
+                    <option value="" disabled selected>Selecione o Bairro</option>
                     <option value="ingleses">Ingleses</option>
                     <option value="rio vermelho">Rio Vermelho</option>
                     <option value="vargem">Vargem</option>
                     <option value="canasvieiras">Canasvieiras</option>
                 </select>
+                <div *ngIf="!bairro" class="alert alert-warning mt-2">Bairro é obrigatório.</div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <input type="text" [(ngModel)]="observacoes" class="form-control mt-2" placeholder="observacoes">
+                <input type="text" [(ngModel)]="cep" name="cep" #cepInput="ngModel" class="form-control mt-2" placeholder="CEP" pattern="^\d{5}-\d{3}$" required>
+                <div *ngIf="cepInput.errors && (cepInput.dirty || cepInput.touched)" class="alert alert-warning mt-2">
+                    <div *ngIf="cepInput.errors['required']">Cep é obrigatorio</div>
+                    <div *ngIf="cepInput.errors['pattern']">Formato de CEP inválido</div>
+                </div>
             </div>
             <div class="col-md-6">
-                <input type="text" [(ngModel)]="cep" class="form-control mt-2" placeholder="CEP">
-            </div>
-            <div class="col-md-6">
-                <input type="text" [(ngModel)]="whatsapp" class="form-control mt-2" placeholder="whatsapp">
+                <input type="text" [(ngModel)]="whatsapp" name="whatsapp" #whatsappInput="ngModel" class="form-control mt-2" placeholder="WhatsApp" pattern="^\d{10,13}$" required>
+                <div *ngIf="whatsappInput.errors && (whatsappInput.dirty || whatsappInput.touched)" class="alert alert-warning mt-2">
+                    <div *ngIf="whatsappInput.errors['required']">Número de WhatsApp é obrigatório</div>
+                    <div *ngIf="whatsappInput.errors['pattern']">Formato de número inválido</div>
+                </div>
             </div>
         </div>
 
         <!-- Método de Pagamento -->
         <h3 class="mt-4">Método de Pagamento</h3>
-        <select [(ngModel)]="metodoPagamento" class="form-control mt-2">
-            <option value="" disabled selected>Selecione a Forma de Pagamento</option> <!-- Opção em branco com texto informativo -->
+        <select [(ngModel)]="metodoPagamento" name="metodoPagamento" class="form-control mt-2" required>
+            <option value="" disabled selected>Selecione a Forma de Pagamento</option>
             <option value="cartao_credito">Cartão de Crédito</option>
             <option value="cartao_debito">Cartão de Débito</option>
             <option value="dinheiro">Dinheiro</option>
         </select>
+        <div *ngIf="!metodoPagamento" class="alert alert-warning mt-2">Método de pagamento é obrigatório.</div>
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="observacoes" name="observacoes" class="form-control mt-2" placeholder="Observações">
+        </div>
         
-        <button class="btn btn-primary mt-3" (click)="enviarPedido()">Enviar Pedido</button>
-    </div>
+
+        <button class="btn btn-primary mt-3" (click)="enviarPedido()" [disabled]="!form.valid">Enviar Pedido</button>
+    </form>
 </div>
 
 <app-footer></app-footer>
