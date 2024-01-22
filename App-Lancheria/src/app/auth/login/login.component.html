@@ -4,8 +4,9 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    Login
+                <div class="card-header text-white text-center">
+                    <!-- Logo centralizado com Bootstrap -->
+                    <img src="assets/img/logo1.png" alt="Logo" style="width: 200px;" class="mx-auto d-block">
                 </div>
                 <div class="card-body">
                     <!-- Mensagem de erro -->
@@ -33,7 +34,7 @@
                             </div>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary w-100" [disabled]="!emailModel.valid || !senhaModel.valid">Login</button>
+                        <button type="submit" class="btn btn-orange-gradient w-100" [disabled]="!emailModel.valid || !senhaModel.valid">Login</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">

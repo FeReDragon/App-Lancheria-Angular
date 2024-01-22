@@ -34,3 +34,23 @@
     margin-left: 8%; /* Ajuste o valor conforme necessário */
     margin-right: 8%; /* Ajuste o valor conforme necessário */
   }
+
+ 
+
+  .nav-link-gradient-text {
+    background:  #fc4a1a; /* Chrome 10-25, Safari 5.1-6 */
+   
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Torna o texto transparente, mostrando apenas o gradiente */
+    text-decoration: none; /* Remove o sublinhado do link */
+}
+
+.gradient-text {
+  background:  #fc4a1a; /* Chrome 10-25, Safari 5.1-6 */
+ 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* Torna o texto transparente, mostrando apenas o gradiente */
+  text-decoration: none; /* Remove o sublinhado do link */
+}

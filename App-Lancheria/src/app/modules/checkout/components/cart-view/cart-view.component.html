@@ -32,7 +32,7 @@
     </table>
     
     <!-- Botão para abrir a modal -->
-<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAdicionarItem">
+<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalAdicionarItem">
   Adicionar + Itens
 </button>
 
@@ -52,7 +52,7 @@
               <span>{{ produto.nome }}</span>
               <span>{{ produto.preco | currency }}</span>
               
-              <button class="btn btn-primary btn-sm" (click)="adicionarItemAoCarrinho(produto)">
+              <button class="btn btn-orange-gradient btn-sm" (click)="adicionarItemAoCarrinho(produto)">
                 Adicionar
               </button>
             </div>

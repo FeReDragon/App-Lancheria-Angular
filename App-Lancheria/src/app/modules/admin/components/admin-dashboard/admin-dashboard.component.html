@@ -8,7 +8,7 @@
       <div class="col-md-3 mb-4">
         <div class="card h-100 text-center">
           <div class="card-body">
-            <i class="fa fa-utensils fa-3x text-primary" aria-hidden="true"></i>
+            <i class="fa fa-utensils fa-3x text-dark" aria-hidden="true"></i>
             <h5 class="card-title mt-3">Prato mais Pedido</h5>
             <p>{{ itemMaisVendido }}</p>
           </div>
@@ -49,22 +49,22 @@
     <div class="row">
       <!-- Gerenciamento de Produtos -->
       <div class="col-md-6 mb-4">
-        <div class="card border-primary h-100">
-          <div class="card-header bg-primary text-white">Produtos Cadastrados</div>
+        <div class="card border-none h-100">
+          <div class="card-header bg-dark text-white">Produtos Cadastrados</div>
           <div class="card-body background-produtos">
             <p class="paragrafo-personalizado"><strong>Total:</strong> {{ totalProdutos }}</p>
-            <a class="btn btn-primary mt-3" routerLink="/adm-itens">Produtos</a>
+            <a class="btn btn-orange-gradient mt-3" routerLink="/adm-itens">Produtos</a>
           </div>
         </div>
       </div>
 
       <!-- Gerenciamento de Pedidos -->
       <div class="col-md-6 mb-4">
-        <div class="card border-success h-100">
-          <div class="card-header bg-success text-white">Gerenciamento de Pedidos</div>
+        <div class="card border-none h-100">
+          <div class="card-header bg-dark text-white">Gerenciamento de Pedidos</div>
           <div class="card-body background-pedidos">
               <p class="paragrafo-personalizado"><strong>PedidosPendentes:</strong> {{ totalPedidosPendentes }}</p>
-              <a class="btn btn-success mt-3" routerLink="/gerenciamento-pedidos">Pedidos</a>
+              <a class="btn btn-orange-gradient mt-3" routerLink="/gerenciamento-pedidos">Pedidos</a>
           </div>
         </div>
     </div>
@@ -72,11 +72,11 @@
 <div class="row">
   <!-- Gerenciamento de Promoções -->
   <div class="col-md-6 mb-4">
-    <div class="card shadow-lg">
+    <div class="card shadow-lg ">
       <div class="card-header bg-dark text-white">Gerenciamento de Promoções</div>
       <div class="card-body background-promocoes">
         <p class="paragrafo-personalizado"><strong>Total de Promoções:</strong> {{ totalPromocoes }}</p>
-        <a class="btn btn-dark mt-3" routerLink="/promo">Promoções</a>
+        <a class="btn btn-orange-gradient mt-3" routerLink="/promo">Promoções</a>
       </div>
     </div>
   </div>
@@ -87,7 +87,7 @@
       <div class="card-header bg-dark text-white">Gerenciamento Prato do Dia</div>
       <div class="card-body background-prato-do-dia">
         <p class="paragrafo-personalizado"><strong>Total de Pratos do Dia:</strong> {{ totalPratosDoDia }}</p>
-        <a class="btn btn-dark mt-3" routerLink="/prato-do-dia">Prato do dia</a>
+        <a class="btn btn-orange-gradient mt-3" routerLink="/prato-do-dia">Prato do dia</a>
       </div>
     </div>
   </div>
