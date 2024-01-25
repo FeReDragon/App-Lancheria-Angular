@@ -22,7 +22,7 @@
         <h3 class="mt-4">Informações de Entrega</h3>
         <div class="row">
             <div class="col-md-6">
-                <input type="text" [(ngModel)]="cep" (blur)="buscarCep()" name="cep" #cepInput="ngModel" class="form-control mt-2" placeholder="CEP XXXXX-XX" pattern="^\d{5}-\d{3}$" required>
+                <input type="text" [(ngModel)]="cep" (blur)="buscarCep()" name="cep" #cepInput="ngModel" class="form-control mt-2" placeholder="CEP" pattern="^\d{5}-\d{3}$" required>
                 <div *ngIf="cepInput.errors && cepInput.touched" class="alert alert-warning mt-2">
                     <div *ngIf="cepInput.errors['required']">Cep é obrigatório</div>
                     <div *ngIf="cepInput.errors['pattern']">Formato de CEP inválido</div>
@@ -35,6 +35,9 @@
         </div>
 
         <div class="row">
+            <div class="col-md-6">
+                <input type="text" [(ngModel)]="complemento" name="complemento" class="form-control mt-2" placeholder="Complemento (opcional)">
+            </div>
             <div class="col-md-6">
                 <input type="text" [(ngModel)]="whatsapp" name="whatsapp" #whatsappInput="ngModel" class="form-control mt-2" placeholder="WhatsApp" pattern="^\d{10,13}$" required>
                 <div *ngIf="whatsappInput.errors && whatsappInput.touched" class="alert alert-warning mt-2">
@@ -52,24 +55,28 @@
                 </select>
                 <div *ngIf="bairroInput.errors && bairroInput.touched" class="alert alert-warning mt-2">Bairro é obrigatório.</div>
             </div>
-        </div>
+            <div *ngIf="mostrarMapa" id="mapId" style="height: 200px;"></div>
 
-        <div id="mapId" style="height: 200px;"></div>
+        </div>
 
         <!-- Método de Pagamento -->
-        <h3 class="mt-4">Método de Pagamento</h3>
-        <select [(ngModel)]="metodoPagamento" name="metodoPagamento" #metodoPagamentoInput="ngModel" class="form-control mt-2" required>
-            <option value="" disabled selected>Selecione a Forma de Pagamento</option>
-            <option value="cartao_credito">Cartão de Crédito</option>
-            <option value="cartao_debito">Cartão de Débito</option>
-            <option value="dinheiro">Dinheiro</option>
-        </select>
-        <div *ngIf="metodoPagamentoInput.errors && metodoPagamentoInput.touched" class="alert alert-warning mt-2">Método de pagamento é obrigatório.</div>
-        <div class="col-md-6">
-            <input type="text" [(ngModel)]="observacoes" name="observacoes" class="form-control mt-2" placeholder="Observações">
-        </div>
-        
-        <button class="btn btn-success mt-3" (click)="enviarPedido()" [disabled]="!form.valid">Enviar Pedido</button>
+        <!-- Método de Pagamento -->
+<h3 class="mt-4">Método de Pagamento</h3>
+<select [(ngModel)]="metodoPagamento" name="metodoPagamento" #metodoPagamentoInput="ngModel" class="form-control mt-2" required>
+    <option value="" disabled selected>Selecione a Forma de Pagamento</option>
+    <option value="cartao_credito">Cartão de Crédito</option>
+    <option value="cartao_debito">Cartão de Débito</option>
+    <option value="dinheiro">Dinheiro</option>
+</select>
+<div *ngIf="metodoPagamentoInput.errors && metodoPagamentoInput.touched" class="alert alert-warning mt-2">Método de pagamento é obrigatório.</div>
+
+<!-- Campo de Troco (aparece apenas se o método de pagamento for Dinheiro) -->
+<div class="col-md-6" *ngIf="metodoPagamento === 'dinheiro'">
+    <input type="text" [(ngModel)]="dinheiroTroco" name="troco" class="form-control mt-2" placeholder="Precisa de Troco?">
+</div>
+
+<button class="btn btn-success mt-3" (click)="enviarPedido()" [disabled]="!form.valid">Enviar Pedido</button>
+
     </form>
 </div>
 

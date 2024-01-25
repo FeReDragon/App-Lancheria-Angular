@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../../core/services/cart.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { OrdersService } from '../../../../core/services/orders-service.service';
-import { LocationIQService } from '../../../../core/services/location-iq.service'; // importar o LocationIQService
-import { CepService } from '../../../../core/services/cep.service'; // importar o CepService
-import * as L from 'leaflet'; // importar o Leaflet
+import { LocationIQService } from '../../../../core/services/location-iq.service'; 
+import { CepService } from '../../../../core/services/cep.service'; 
+import * as L from 'leaflet';
 import { Cart } from '../../../../shared/model/cart.model';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/model/order.model';
@@ -23,12 +23,14 @@ export class OrderCreateComponent implements OnInit {
   };
   bairro: string = '';
   endereco: string = '';
-  observacoes: string = '';
+  complemento: string = '';
   cep: string = '';
   whatsapp: string = '';
   metodoPagamento: string = '';
   taxaEntrega: number = 0;
   map: any; // Variável para o mapa
+  mostrarMapa: boolean = false; // Inicializar como false
+  dinheiroTroco:string = '';
 
   constructor(
     private cartService: CartService,
@@ -41,7 +43,7 @@ export class OrderCreateComponent implements OnInit {
 
   ngOnInit() {
     this.obterDadosCarrinho();
-    this.inicializarMapa();
+    this.gerenciarMapa(); 
   }
 
   obterDadosCarrinho() {
@@ -70,11 +72,12 @@ export class OrderCreateComponent implements OnInit {
     total: totalPedido, // Total inclui a taxa de entrega
     endereco: this.endereco,
     bairro: this.bairro,
-    observacoes: this.observacoes,
+    complemento: this.complemento,
     whatsapp: this.whatsapp,
     cep: this.cep,
     metodoPagamento: this.metodoPagamento,
     taxaEntrega: this.taxaEntrega, // Adicionando a taxa de entrega ao pedido
+    dinheiroTroco: this.dinheiroTroco,
     };
   
   // Enviar o pedido
@@ -122,62 +125,52 @@ export class OrderCreateComponent implements OnInit {
     this.taxaEntrega = this.calcularTaxaEntrega();
 }
 
-buscarCep() {
-  this.cepService.buscarEndereco(this.cep).subscribe(dados => {
-    console.log('Dados do CEP:', dados);
-    if (!dados.erro) {
-      this.endereco = dados.logradouro; 
-      this.converterEnderecoEmCoordenadas(dados.logradouro, dados.localidade);
-    }
-  });
-}
-
-converterEnderecoEmCoordenadas(logradouro: string, localidade: string, numero?: string) {
-  let enderecoCompleto = logradouro;
-  if (numero) {
-    enderecoCompleto += ', ' + numero;
-  }
-
-  this.locationIQService.geocoding(enderecoCompleto, localidade).subscribe(data => {
-    console.log('Dados de geocoding:', data);
-    if (data.length > 0) {
-      this.atualizarMapa(data[0].lat, data[0].lon);
-    }
-  });
-}
-
-
-atualizarMapa(lat: number, lon: number) {
-  console.log('Atualizando mapa para:', lat, lon);
-  const zoomLevel = 17; // Zoom mais próximo
-
-  if (this.map) {
-    this.map.setView(new L.LatLng(lat, lon), zoomLevel);
-
-    // Remove marcadores existentes
-    this.map.eachLayer((layer: L.Layer) => {
-      if (layer instanceof L.Marker) {
-        this.map.removeLayer(layer);
+  buscarCep() {
+    this.cepService.buscarEndereco(this.cep).subscribe(dados => {
+      console.log('Dados do CEP:', dados);
+      if (!dados.erro) {
+        this.endereco = dados.logradouro; 
+        this.converterEnderecoEmCoordenadas(dados.logradouro, dados.localidade);
+        this.mostrarMapa = true; // Ativa a exibição do mapa
       }
     });
-
-    // Adiciona um novo marcador
-    const marker = L.marker([lat, lon]).addTo(this.map);
-    marker.bindPopup("Endereço Encontrado").openPopup();
-  } else {
-    console.log('Mapa não inicializado');
   }
-}
 
-inicializarMapa() {
-  const coordenadasInglesesFlorianopolis: L.LatLngTuple = [-27.4355556, -48.4788889];
-
-  this.map = L.map('mapId').setView(coordenadasInglesesFlorianopolis, 13);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(this.map);
+  converterEnderecoEmCoordenadas(logradouro: string, localidade: string, numero?: string) {
+    let enderecoCompleto = logradouro;
+    if (numero) {
+      enderecoCompleto += ', ' + numero;
+    }
+  
+    this.locationIQService.geocoding(enderecoCompleto, localidade).subscribe(data => {
+      console.log('Dados de geocoding:', data);
+      if (data.length > 0) {
+        this.gerenciarMapa(data[0].lat, data[0].lon); // Atualiza a localização do mapa
+      }
+    });
   }
+
+  gerenciarMapa(lat?: number, lon?: number) {
+    const coordenadasPadrao: L.LatLngTuple = [-27.4355556, -48.4788889]; // Coordenadas padrão
+  
+    if (!this.map) {
+      // Inicializa o mapa se ainda não foi inicializado
+      this.map = L.map('mapId').setView(coordenadasPadrao, 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(this.map);
+    }
+  
+    if (lat && lon) {
+      // Atualiza a localização do mapa se as coordenadas forem fornecidas
+      console.log('Atualizando mapa para:', lat, lon);
+      const zoomLevel = 15; // Zoom mais próximo
+      this.map.setView(new L.LatLng(lat, lon), zoomLevel);
+      const marker = L.marker([lat, lon]).addTo(this.map);
+      marker.bindPopup("Endereço Encontrado").openPopup();
+    }
+  }
+  
 }
 
