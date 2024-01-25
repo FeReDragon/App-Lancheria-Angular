@@ -29,15 +29,21 @@
                 </h2>
                 <div [id]="'collapsePedido' + order.id" class="accordion-collapse collapse" aria-labelledby="'headingPedido' + order.id" [attr.data-bs-parent]="'#accordionPedido' + order.id">
                   <div class="accordion-body">
-                    <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.observacoes}}, {{ order.cep }}, {{order.whatsapp}}</div>
+                    <div><strong>Endereço:</strong> {{ order.endereco }}, {{ order.bairro }}, {{ order.complemento }}, {{ order.cep }}, {{ order.whatsapp }}</div>
                     <div><strong>Método de Pagamento:</strong> {{ order.metodoPagamento }}</div>
+                  
+                    <!-- Exibe o troco se o método de pagamento for dinheiro -->
+                    <div *ngIf="order.metodoPagamento === 'dinheiro' && order.dinheiroTroco">
+                      <strong>Troco para:</strong> {{ order.dinheiroTroco | currency:'BRL' }}
+                    </div>
+                  
                     <ul>
                       <li *ngFor="let item of order.itens">
                         {{ item.nome }} - Quantidade: {{ item.quantidade }}, Preço: {{ item.preco | currency:'BRL' }}
                       </li>
                     </ul>
                   </div>
-                </div>
+                  
               </div>
             </div>
           </div>
