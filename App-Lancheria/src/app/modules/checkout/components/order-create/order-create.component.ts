@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../../core/services/cart.service';
 import { AuthService } from '../../../../core/services/auth.service';
 import { OrdersService } from '../../../../core/services/orders-service.service';
+import { LocationIQService } from '../../../../core/services/location-iq.service'; 
+import { CepService } from '../../../../core/services/cep.service'; 
+import * as L from 'leaflet';
 import { Cart } from '../../../../shared/model/cart.model';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/model/order.model';
@@ -20,22 +23,27 @@ export class OrderCreateComponent implements OnInit {
   };
   bairro: string = '';
   endereco: string = '';
-  observacoes: string = '';
+  complemento: string = '';
   cep: string = '';
   whatsapp: string = '';
   metodoPagamento: string = '';
-  taxaEntrega: number = 0;// Garantir um número, mesmo se for 0
-
+  taxaEntrega: number = 0;
+  map: any; // Variável para o mapa
+  mostrarMapa: boolean = false; // Inicializar como false
+  dinheiroTroco:string = '';
 
   constructor(
     private cartService: CartService,
     private authService: AuthService,
     private ordersService: OrdersService,
-    private router: Router
+    private router: Router,
+    private cepService: CepService, 
+    private locationIQService: LocationIQService 
   ) {}
 
   ngOnInit() {
     this.obterDadosCarrinho();
+    this.gerenciarMapa(); 
   }
 
   obterDadosCarrinho() {
@@ -64,11 +72,12 @@ export class OrderCreateComponent implements OnInit {
     total: totalPedido, // Total inclui a taxa de entrega
     endereco: this.endereco,
     bairro: this.bairro,
-    observacoes: this.observacoes,
+    complemento: this.complemento,
     whatsapp: this.whatsapp,
     cep: this.cep,
     metodoPagamento: this.metodoPagamento,
     taxaEntrega: this.taxaEntrega, // Adicionando a taxa de entrega ao pedido
+    dinheiroTroco: this.dinheiroTroco,
     };
   
   // Enviar o pedido
@@ -96,7 +105,6 @@ export class OrderCreateComponent implements OnInit {
   
   
   calcularTaxaEntrega(): number {
-    // Certifique-se de que 'this.bairro' é uma string válida
     const bairro = this.bairro ? this.bairro.toLowerCase() : '';
   
     switch (bairro) {
@@ -117,5 +125,52 @@ export class OrderCreateComponent implements OnInit {
     this.taxaEntrega = this.calcularTaxaEntrega();
 }
 
+  buscarCep() {
+    this.cepService.buscarEndereco(this.cep).subscribe(dados => {
+      console.log('Dados do CEP:', dados);
+      if (!dados.erro) {
+        this.endereco = dados.logradouro; 
+        this.converterEnderecoEmCoordenadas(dados.logradouro, dados.localidade);
+        this.mostrarMapa = true; // Ativa a exibição do mapa
+      }
+    });
+  }
 
+  converterEnderecoEmCoordenadas(logradouro: string, localidade: string, numero?: string) {
+    let enderecoCompleto = logradouro;
+    if (numero) {
+      enderecoCompleto += ', ' + numero;
+    }
+  
+    this.locationIQService.geocoding(enderecoCompleto, localidade).subscribe(data => {
+      console.log('Dados de geocoding:', data);
+      if (data.length > 0) {
+        this.gerenciarMapa(data[0].lat, data[0].lon); // Atualiza a localização do mapa
+      }
+    });
+  }
+
+  gerenciarMapa(lat?: number, lon?: number) {
+    const coordenadasPadrao: L.LatLngTuple = [-27.4355556, -48.4788889]; // Coordenadas padrão
+  
+    if (!this.map) {
+      // Inicializa o mapa se ainda não foi inicializado
+      this.map = L.map('mapId').setView(coordenadasPadrao, 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(this.map);
+    }
+  
+    if (lat && lon) {
+      // Atualiza a localização do mapa se as coordenadas forem fornecidas
+      console.log('Atualizando mapa para:', lat, lon);
+      const zoomLevel = 15; // Zoom mais próximo
+      this.map.setView(new L.LatLng(lat, lon), zoomLevel);
+      const marker = L.marker([lat, lon]).addTo(this.map);
+      marker.bindPopup("Endereço Encontrado").openPopup();
+    }
+  }
+  
 }
+

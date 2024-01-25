@@ -17,10 +17,11 @@ export interface Order {
 
     bairro: string;
     endereco: string;
-    observacoes: string;
+    complemento: string;
     cep: string;
     whatsapp: string;
     metodoPagamento: string;
     taxaEntrega?: number;
+    dinheiroTroco?:string;
 }
 
