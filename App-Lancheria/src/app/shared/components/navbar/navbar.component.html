@@ -11,7 +11,7 @@
       <li>
         <a routerLink="/carrinho" class="nav-link px-2 nav-link-gradient-text"><i class="fa fa-shopping-cart"></i> Carrinho</a>
       </li>
-      <li>
+      <li *ngIf="isAdmin()">
         <a routerLink="/dashboard" class="nav-link px-2 nav-link-gradient-text"><i class="fa fa-chart-line"></i> Dashboard</a>
       </li>
       <li>
