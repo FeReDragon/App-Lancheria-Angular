@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './shared/components/home/home.component'; // Importar HomeComponent
+
+// Importação dos componentes
+import { HomeComponent } from './shared/components/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductListComponent } from './modules/catalog/components/product-list/product-list.component';
@@ -13,20 +15,24 @@ import { OrderManagementComponent } from './modules/admin/components/order-manag
 import { PromotionDashboardComponent } from './modules/promotions/components/promotion-dashboard/promotion-dashboard.component';
 import { ManageDishOfTheDayComponent } from './modules/admin/components/manage-dish-of-the-day/manage-dish-of-the-day.component';
 
+// Importação dos guards
+import { AuthGuard } from '../app/core/guard/auth.guard';
+import { AdminGuard } from '../app/core/guard/admin.guard';
+
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Rota raiz redireciona para /home
-  { path: 'home', component: HomeComponent }, // Rota para HomeComponent
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegisterComponent },
   { path: 'menu', component: ProductListComponent },
-  { path: 'carrinho', component: CartViewComponent },
-  { path: 'pedido', component: OrderCreateComponent },
-  { path: 'sumario', component: OrderSummaryComponent },
-  { path: 'adm-itens', component: ManageProductsComponent },
-  { path: 'dashboard', component: AdminDashboardComponent }, 
-  { path: 'gerenciamento-pedidos', component: OrderManagementComponent },
-  { path: 'promo', component: PromotionDashboardComponent },
-  { path: 'prato-do-dia', component: ManageDishOfTheDayComponent },
+  { path: 'carrinho', component: CartViewComponent, canActivate: [AuthGuard] },
+  { path: 'pedido', component: OrderCreateComponent, canActivate: [AuthGuard] },
+  { path: 'sumario', component: OrderSummaryComponent, canActivate: [AuthGuard] },
+  { path: 'adm-itens', component: ManageProductsComponent, canActivate: [AdminGuard] },
+  { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'gerenciamento-pedidos', component: OrderManagementComponent, canActivate: [AdminGuard] },
+  { path: 'promo', component: PromotionDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'prato-do-dia', component: ManageDishOfTheDayComponent, canActivate: [AdminGuard] },
   // Outras rotas podem ser adicionadas aqui
 ];
 
@@ -35,3 +41,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
